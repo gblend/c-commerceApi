@@ -19,6 +19,9 @@ if(app.get('env') === 'development') {
     app.use(morgan('dev'));
 }
 
+app.get('/api/v1/', (req, res) => {
+    return res.json({'status': '200', message: 'Ecommerce backend service running'});
+});
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
