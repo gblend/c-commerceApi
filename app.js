@@ -4,8 +4,17 @@ const morgan = require('morgan');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 const notFoundMiddleware = require('./middleware/not-found');
 const connectDB = require('./db/connect')
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
+const { decodeCookies } = require('./utils');
+require('dotenv').config();
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: false}));
+app.use(cookieParser(process.env.JWT_SECRET));
+app.use(decodeCookies);
+app.use(cors());
 if(app.get('env') === 'development') {
     app.use(morgan('dev'));
 }
