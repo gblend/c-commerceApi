@@ -4,6 +4,8 @@ const morgan = require('morgan');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 const notFoundMiddleware = require('./middleware/not-found');
 const connectDB = require('./db/connect')
+const authRouter = require('./routes/authRoutes');
+const userRouter = require('./routes/userRoutes');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const { decodeCookies } = require('./utils');
@@ -22,6 +24,8 @@ if(app.get('env') === 'development') {
 app.get('/api/v1/', (req, res) => {
     return res.json({'status': '200', message: 'Ecommerce backend service running'});
 });
+app.use('/api/v1', authRouter);
+app.use('/api/v1/users', userRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
