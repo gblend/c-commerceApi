@@ -4,7 +4,7 @@
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git://github.com/gblend/ecommerce"
+    "url": "git://github.com/gblend/c-commerceApi.git"
   },
   "main": "app.js",
   "scripts": {
