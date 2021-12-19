@@ -2,6 +2,7 @@ const { StatusCodes } = require('http-status-codes');
 const { Product, validateProductSchema } = require('../models/Product');
 const CustomError = require('../errors');
 const mongoose = require("mongoose");
+const { uploadProductImage } = require('../utils/uploadsController');
 
 const createProduct = async (req, res) => {
     req.body.user = new mongoose.Types.ObjectId(req.user.id);
@@ -68,8 +69,9 @@ const deleteProduct = async (req, res) => {
     return res.status(StatusCodes.NO_CONTENT).json({ status: 'success', message: `Product with id ${id} deleted successfully`, data: {} });
 }
 
-const uploadImage = (req, res) => {
-    return res.send('upload image');
+const uploadImage = async (req, res) => {
+    const {secure_url} = await uploadProductImage(req, res);
+    res.status(StatusCodes.OK).json({ status: 'success', message: '', secure_url});
 }
 
 module.exports = {
