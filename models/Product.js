@@ -31,7 +31,8 @@ const ProductSchema = new schema({
         }
     },
     colors: {
-        type: [String]
+        type: [String],
+        default: ['#000']
     },
     featured: {
         type: Boolean,
@@ -60,15 +61,15 @@ const Product = mongoose.model('Product', ProductSchema);
 const validateProductSchema = (productData) => {
     const product = joi.object({
         name: joi.string().min(3).required(),
-        price: joi.number().required(),
+        price: joi.number(),
         description: joi.string().min(10).required(),
-        image: joi.string().uri().required(),
+        image: joi.string().uri(),
         category: joi.string().min(3).required(),
         company: joi.string().min(3).required(),
-        colors: joi.array().required(),
+        colors: joi.array(),
         featured: joi.boolean(),
         freeShipping: joi.boolean(),
-        inventory: joi.number().required(),
+        inventory: joi.number(),
         averageRating: joi.number(),
         user: joi.object().required(),
     });
