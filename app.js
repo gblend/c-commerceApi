@@ -8,9 +8,17 @@ const authRouter = require('./routes/authRoutes');
 const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
 const cookieParser = require('cookie-parser');
+const fileUpload = require('express-fileupload')
 const cors = require('cors');
 const { decodeCookies } = require('./utils');
 require('dotenv').config();
+
+const cloudinary = require('cloudinary').v2;
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_API_KEY,
+    api_secret: process.env.CLOUD_API_SECRET
+});
 
 const app = express();
 app.use(express.json());
@@ -18,6 +26,8 @@ app.use(express.urlencoded({ extended: false}));
 app.use(cookieParser(process.env.JWT_SECRET));
 app.use(decodeCookies);
 app.use(cors());
+app.use(fileUpload({useTempFiles: true}));
+
 if(app.get('env') === 'development') {
     app.use(morgan('dev'));
 }
@@ -33,14 +43,10 @@ app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 3000;
 const start = async () => {
-    try {
-        await connectDB(process.env.MONGO_URI);
-        app.listen(port, () => {
-            console.log(`server listening on port ${port}`);
-        });
-    } catch (err) {
-        console.log(err.message);
-    }
+    await connectDB(process.env.MONGO_URI);
+    app.listen(port, () => {
+        console.log(`server listening on port ${port}`);
+    });
 }
 
 start();
