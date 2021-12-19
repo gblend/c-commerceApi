@@ -15,7 +15,7 @@ const register = async (req, res) => {
         throw new CustomAPIError('This email address is already in use');
     }
 
-    const isAdminExists = (await User.countDocuments( {})) === 0;
+    const isAdminExists = (await User.countDocuments( {role: 'admin'})) === 0;
     const role = isAdminExists ? 'admin' : 'user';
 
     const user = await User.create({ email, name, password, role});
