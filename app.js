@@ -6,6 +6,7 @@ const notFoundMiddleware = require('./middleware/not-found');
 const connectDB = require('./db/connect')
 const authRouter = require('./routes/authRoutes');
 const userRouter = require('./routes/userRoutes');
+const productRouter = require('./routes/productRoutes');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const { decodeCookies } = require('./utils');
@@ -26,6 +27,7 @@ app.get('/api/v1/', (req, res) => {
 });
 app.use('/api/v1', authRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/products', productRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
