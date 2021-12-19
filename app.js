@@ -11,6 +11,7 @@ const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload')
 const cors = require('cors');
 const { decodeCookies } = require('./utils');
+const path = require("path");
 require('dotenv').config();
 
 const cloudinary = require('cloudinary').v2;
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: false}));
 app.use(cookieParser(process.env.JWT_SECRET));
 app.use(decodeCookies);
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload({useTempFiles: true}));
 
 if(app.get('env') === 'development') {
