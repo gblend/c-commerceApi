@@ -22,13 +22,13 @@ const getAllAdmins = async (req, res) => {
 }
 
 const getSingleUser = async (req, res) => {
-    const {id} = req.params;
-    if(!mongoose.Types.ObjectId.isValid(id)) {
+    const {id:userId} = req.params;
+    if(!mongoose.Types.ObjectId.isValid(userId)) {
         throw new BadRequestError('Invalid user id');
     }
-    const user = await User.findOne({_id: id}).select('-password');
+    const user = await User.findOne({_id: userId}).select('-password');
     if (!user) {
-        throw new NotFoundError(`User with id ${id} does not exist`);
+        throw new NotFoundError(`User with id ${userId} does not exist`);
     }
     checkPermissions(req.user, user._id);
     return res.status(StatusCodes.OK).json({ status: 'success', message: 'User fetched successfully', data: user });
