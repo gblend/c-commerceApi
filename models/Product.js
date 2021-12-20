@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 const joi = require('joi');
 
-const ProductSchema = new schema({
+const ProductSchema = new Schema({
     name: {
         type: String,
         trim: true,

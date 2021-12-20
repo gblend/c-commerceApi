@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const joi = require('joi');
-const schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
 const { createJWT } = require('../utils');
 
-const UserSchema = new schema({
+const UserSchema = new Schema({
     name: {
         type: String,
         minlength: 3,
