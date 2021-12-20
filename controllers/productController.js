@@ -3,6 +3,7 @@ const { Product, validateProductSchema } = require('../models/Product');
 const CustomError = require('../errors');
 const mongoose = require("mongoose");
 const { uploadProductImage } = require('../utils/uploadsController');
+const {paginator} = require("../utils/pagination");
 
 const createProduct = async (req, res) => {
     req.body.user = new mongoose.Types.ObjectId(req.user.id);
@@ -17,19 +18,11 @@ const createProduct = async (req, res) => {
 }
 
 const getAllProducts = async (req, res) => {
-    const { pageSize, pageNumber } = req.params;
-    const pagination = {
-        pageSize: Number(pageSize? pageSize : 10),
-        pageNumber: Number(pageNumber? pageNumber : 1)
-    }
-    pagination.offset = Number((pagination.pageNumber - 1) * pagination.pageSize);
-
-    const products = Product.find({});
+    const products = await Product.find({});
     if(!products) {
         throw new CustomError.NotFoundError('No products found');
     }
 
-    const productData = await products.skip(pagination.offset).limit(pagination.pageSize)
     const total = await Product.countDocuments().exec();
     return res.status(StatusCodes.OK)
         .json({
@@ -37,33 +30,31 @@ const getAllProducts = async (req, res) => {
                 message: 'Products fetched successfully',
                 data: {
                     total,
-                    current: pagination.pageNumber,
-                    pages: Math.ceil(total / pagination.pageSize),
-                    productData
+                    products
                 }
             });
 }
 
 const getSingleProduct = async (req, res) => {
-    const { id } = req.params;
-    const product = await Product.findOne({ _id: id });
+    const { id:productId } = req.params;
+    const product = await Product.findOne({ _id: productId });
     if(!product) {
-        throw new CustomError.BadRequestError(`Product with id ${id} not found`);
+        throw new CustomError.BadRequestError(`Product with id ${productId} not found`);
     }
     return res.status(StatusCodes.OK).json({ status: 'success', message: 'Product fetched successfully', data: product });
 }
 
 const updateProduct = async (req, res) => {
-    const { id } = req.params;
-    const product = await Product.findOneAndUpdate({ _id: id }, req.body, { new: true, runValidators: true });
+    const { id:productId } = req.params;
+    const product = await Product.findOneAndUpdate({ _id: productId }, req.body, { new: true, runValidators: true });
     return res.status(StatusCodes.OK).json({ status: 'success', message: 'Product updated successfully', data: product });
 }
 
 const deleteProduct = async (req, res) => {
-    const { id } = req.params;
-    const product = await Product.findOne({ _id: id });
+    const { id:productId } = req.params;
+    const product = await Product.findOne({ _id: productId });
     if(!product) {
-        throw new CustomError.BadRequestError(`Product with id ${id} not found`);
+        throw new CustomError.BadRequestError(`Product with id ${productId} not found`);
     }
     product.remove();
     return res.status(StatusCodes.NO_CONTENT).json({ status: 'success', message: `Product with id ${id} deleted successfully`, data: {} });
