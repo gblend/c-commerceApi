@@ -54,8 +54,14 @@ const ProductSchema = new Schema({
         type: mongoose.Types.ObjectId,
         ref: 'User'
     },
-}, { timestamps: true });
+}, { timestamps: true, toJSON: {virtuals: true}, toObject: {virtuals: true} });
 
+ProductSchema.virtuals({
+   ref: 'reviews',
+   localField: '_id',
+   foreignField: 'product',
+   justOne: false
+});
 const Product = mongoose.model('Product', ProductSchema);
 
 const validateProductSchema = (productData) => {
