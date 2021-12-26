@@ -41,6 +41,10 @@ ReviewSchema.statics.calculateAverageRating = async function(productId) {
             }
         }
     ]);
+    await this.model('Product').findOneAndUpdate({_id: productId}, {
+        averageRating: Math.ceil(result[0]?.averageRating || 0),
+        numberOfReviews: Math.ceil(result[0].numberOfReviews || 0)
+    })
 }
 
 ReviewSchema.post('save', async function() {
