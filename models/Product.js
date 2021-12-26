@@ -8,7 +8,7 @@ const ProductSchema = new Schema({
         trim: true,
     },
     price: {
-        Number,
+        type: Number,
         default: 0
     },
     description: {
@@ -76,7 +76,7 @@ const Product = mongoose.model('Product', ProductSchema);
 const validateProductSchema = (productData) => {
     const product = joi.object({
         name: joi.string().min(3).required(),
-        price: joi.number(),
+        price: joi.number().required(),
         description: joi.string().min(10).required(),
         image: joi.string().uri(),
         category: joi.string().min(3).required(),
