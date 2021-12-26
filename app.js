@@ -3,7 +3,7 @@ require('express-async-errors')
 const morgan = require('morgan');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 const notFoundMiddleware = require('./middleware/not-found');
-const connectDB = require('./db/connect')
+const connectDB = require('./config/db/connect')
 const authRouter = require('./routes/authRoutes');
 const userRouter = require('./routes/userRoutes');
 const productRouter = require('./routes/productRoutes');
@@ -14,6 +14,10 @@ const cors = require('cors');
 const { decodeCookies } = require('./utils');
 const path = require("path");
 require('dotenv').config();
+const xss = require('xss-clean');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+const mongoSanitize = require('express-mongo-sanitize');
 
 const cloudinary = require('cloudinary').v2;
 cloudinary.config({
@@ -23,6 +27,16 @@ cloudinary.config({
 });
 
 const app = express();
+app.use(helmet());
+app.use(xss());
+app.use(mongoSanitize);
+app.set('trust proxy', 1);
+app.use(
+    rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 60
+    })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
 app.use(cookieParser(process.env.JWT_SECRET));
