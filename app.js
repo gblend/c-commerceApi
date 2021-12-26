@@ -53,6 +53,10 @@ if(app.get('env') === 'development') {
 app.get('/api/v1/', (req, res) => {
     return res.json({'status': '200', message: 'Ecommerce backend service running'});
 });
+app.get('/api/v1/doc', (req, res) => {
+    return res.sendFile(path.join(__dirname, 'public/index.html'));
+});
+
 app.use('/api/v1', authRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/products', productRouter);
