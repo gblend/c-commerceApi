@@ -8,7 +8,7 @@ const uploadProductImage = async (req) => {
     }
 
     const productImage = req.files.productImage;
-    if (!productImage.mimeType.startsWith('image/')) {
+    if (!productImage.mimetype.startsWith('image/')) {
         throw new CustomError.BadRequestError('Please provide a valid product image');
     }
 
