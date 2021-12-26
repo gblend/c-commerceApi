@@ -1,0 +1,2413 @@
+{
+	"info": {
+		"_postman_id": "224fc157-f747-4d0b-9bf1-044bbbea4c9e",
+		"name": "Ecommerce API",
+		"description": "Ecommerce API\n\nThis is a robust fully functional Ecommerce API.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/register",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"gabriel.ilochi@gmail.com\",\n    \"name\": \"Gabriel Ilochi\",\n    \"password\": \"password\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/register",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "token=s%3AeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR2FicmllbCBJbG9jaGkiLCJpZCI6IjYxYmYxYTlmMjhkYWEzYzBmNmVjOTkyZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTYzOTkxNDE0NCwiZXhwIjoxNjQwMDAwNTQ0fQ.C8KQFNJ6TTbPxFDnlNG9hbA9Hz0ykZDc53ce6TPC84E.eaIc%2F1KneDsG5zs2RIeklYDUZKeWG4MJJczW%2BInTr2s; Path=/; Expires=Mon, 20 Dec 2021 11:42:24 GMT; HttpOnly"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "497"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f1-qdSkTbsKn0/Lj0ahHJP8bu8ev40\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Dec 2021 11:42:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Account created successfully\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR2FicmllbCBJbG9jaGkiLCJpZCI6IjYxYmYxYTlmMjhkYWEzYzBmNmVjOTkyZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTYzOTkxNDE0NCwiZXhwIjoxNjQwMDAwNTQ0fQ.C8KQFNJ6TTbPxFDnlNG9hbA9Hz0ykZDc53ce6TPC84E\",\n    \"data\": {\n        \"name\": \"Gabriel Ilochi\",\n        \"email\": \"gabriel.ilochi@gmail.com\",\n        \"role\": \"admin\",\n        \"_id\": \"61bf1a9f28daa3c0f6ec992e\",\n        \"createdAt\": \"2021-12-19T11:42:23.693Z\",\n        \"updatedAt\": \"2021-12-19T11:42:23.693Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/login",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"gabriel.ilochi@gmail.com\",\n    \"password\":\"password\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/login",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "token=s%3AeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR2FicmllbCBJbG9jaGkiLCJpZCI6IjYxYmYxYTlmMjhkYWEzYzBmNmVjOTkyZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY0MDQ3ODYxOSwiZXhwIjoxNjQwNTY1MDE5fQ.gIh2g_N_CAXnvn6KZ2SbstlBk58WxYkfBAH0aajhIBc.xwKGEx%2Fs7jijY3mn6NcVPMVuqGrAKt5MzeSKKGtrqGI; Path=/; Expires=Mon, 27 Dec 2021 00:30:19 GMT; HttpOnly"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "485"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1e5-DrNP6KOhTkEYRwey+3VlZjdIDAE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Dec 2021 00:30:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Login successful\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR2FicmllbCBJbG9jaGkiLCJpZCI6IjYxYmYxYTlmMjhkYWEzYzBmNmVjOTkyZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY0MDQ3ODYxOSwiZXhwIjoxNjQwNTY1MDE5fQ.gIh2g_N_CAXnvn6KZ2SbstlBk58WxYkfBAH0aajhIBc\",\n    \"data\": {\n        \"_id\": \"61bf1a9f28daa3c0f6ec992e\",\n        \"name\": \"Gabriel Ilochi\",\n        \"email\": \"gabriel.ilochi@gmail.com\",\n        \"role\": \"admin\",\n        \"createdAt\": \"2021-12-19T11:42:23.693Z\",\n        \"updatedAt\": \"2021-12-19T11:42:23.693Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/logout",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Logout",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/logout",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c-zxN2NsBtfu4pkRikQUdhse26NHA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Dec 2021 08:02:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/users",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "262"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"106-v5klZKKWzYyoWPEykV0LTCyfN9k\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 16 Dec 2021 16:15:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"users fetched successfully\",\n    \"data\": [\n        {\n            \"_id\": \"61b8ce201620c882d2b6f4a4\",\n            \"name\": \"Gabriel Ilochi\",\n            \"email\": \"gabriel.ilochi@gmail.com\",\n            \"role\": \"user\",\n            \"createdAt\": \"2021-12-14T17:02:24.243Z\",\n            \"updatedAt\": \"2021-12-14T17:02:24.243Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Update User Password",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/updateUserPassword",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"users",
+								"updateUserPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Admins",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/admins",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"users",
+								"admins"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Admins",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/users/admins",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"users",
+										"admins"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "262"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"106-g7CIG84m7sFXCdzJMNaDUBt9Wdw\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 16 Dec 2021 16:15:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"users fetched successfully\",\n    \"data\": [\n        {\n            \"_id\": \"61b8c3fd56f5af99f6e5e07d\",\n            \"name\": \"Gabriel Ilochi\",\n            \"email\": \"gabrielilochi@gmail.com\",\n            \"role\": \"admin\",\n            \"createdAt\": \"2021-12-14T16:19:09.167Z\",\n            \"updatedAt\": \"2021-12-14T16:19:09.167Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Single User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/61b8ce201620c882d2b6f4a4",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"users",
+								"61b8ce201620c882d2b6f4a4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Single User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/users/61b8ce201620c882d2b6f4a4",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"users",
+										"61b8ce201620c882d2b6f4a4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "259"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"103-YunUBs848RC5IrlzMoPs0DNw0NU\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Dec 2021 03:52:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"User fetched successfully\",\n    \"data\": {\n        \"_id\": \"61b8ce201620c882d2b6f4a4\",\n        \"name\": \"Gabriel Ilochi\",\n        \"email\": \"gabriel.ilochi@gmail.com\",\n        \"role\": \"user\",\n        \"createdAt\": \"2021-12-14T17:02:24.243Z\",\n        \"updatedAt\": \"2021-12-14T17:02:24.243Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"name\": \"Gabriel Ilochi C.\",\n        \"email\": \"gabriel@gmail.com\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/61b8c3fd56f5af99f6e5e07d",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"users",
+								"61b8c3fd56f5af99f6e5e07d"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update User",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"name\": \"Gabriel Ilochi C.\",\n        \"email\": \"gabriel@gmail.com\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/users/61b8c3fd56f5af99f6e5e07d",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"users",
+										"61b8c3fd56f5af99f6e5e07d"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "token=s%3AeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR2FicmllbCBJbG9jaGkiLCJpZCI6IjYxYjhjM2ZkNTZmNWFmOTlmNmU1ZTA3ZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTYzOTcwNjgzNywiZXhwIjoxNjM5NzkzMjM3fQ.AZvBGAA_gzPJbrT2VfZ1IkSyiuvXdlBEGqUyFagJb8Q.rjpcKbS5FSpBVooRNyBa0Fhn36huUc2s80nQakUwXxk; Path=/; Expires=Sat, 18 Dec 2021 02:07:17 GMT; HttpOnly"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "500"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f4-SMZ4NbSH5/O26zZGAzNopwvR7Po\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Dec 2021 02:07:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Information updated successfully\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR2FicmllbCBJbG9jaGkiLCJpZCI6IjYxYjhjM2ZkNTZmNWFmOTlmNmU1ZTA3ZCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTYzOTcwNjgzNywiZXhwIjoxNjM5NzkzMjM3fQ.AZvBGAA_gzPJbrT2VfZ1IkSyiuvXdlBEGqUyFagJb8Q\",\n    \"data\": {\n        \"_id\": \"61b8c3fd56f5af99f6e5e07d\",\n        \"name\": \"Gabriel Ilochi\",\n        \"email\": \"gabrielilochi@gmail.com\",\n        \"role\": \"admin\",\n        \"createdAt\": \"2021-12-14T16:19:09.167Z\",\n        \"updatedAt\": \"2021-12-16T19:36:58.733Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Show Me",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/me",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Show Me",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/users/me",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"users",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "172"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ac-J3EmWVRzB0ibpi+ML19nCi5WBDg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Dec 2021 11:55:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"User fetched successfully\",\n    \"data\": {\n        \"name\": \"Gabriel Ilochi\",\n        \"id\": \"61bf1a9f28daa3c0f6ec992e\",\n        \"role\": \"admin\",\n        \"iat\": 1640478619,\n        \"exp\": 1640565019\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Get All Product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/products",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Product",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/products",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2666"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a6a-ni0mx5/p6Q/HJfb8AvzRfMfXa6E\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Dec 2021 02:31:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Products fetched successfully\",\n    \"data\": {\n        \"total\": 3,\n        \"products\": [\n            {\n                \"_id\": \"61bf246423f382b8b90913ad\",\n                \"name\": \"albany\",\n                \"description\": \"Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge\",\n                \"image\": \"https://dl.airtable.com/.attachmentThumbnails/0be1af59cf889899b5c9abb1e4db38a4/d631ac52\",\n                \"category\": \"kitchen\",\n                \"company\": \"liddy\",\n                \"colors\": [\n                    \"#000\",\n                    \"#ffb900\"\n                ],\n                \"featured\": false,\n                \"freeShipping\": false,\n                \"inventory\": 0,\n                \"averageRating\": 2,\n                \"user\": \"61bf1a9f28daa3c0f6ec992e\",\n                \"createdAt\": \"2021-12-19T12:24:04.234Z\",\n                \"updatedAt\": \"2021-12-26T00:30:26.961Z\",\n                \"__v\": 0,\n                \"numberOfReviews\": 2,\n                \"price\": 3000,\n                \"id\": \"61bf246423f382b8b90913ad\"\n            },\n            {\n                \"_id\": \"61c7d30c6e7c73d1b064e629\",\n                \"name\": \"emperor bed\",\n                \"price\": 23999,\n                \"description\": \"Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge\",\n                \"image\": \"https://dl.airtable.com/.attachmentThumbnails/0446e84c5bca9643de3452a61b2d6195/1b32f48b\",\n                \"category\": \"bedroom\",\n                \"company\": \"ikea\",\n                \"colors\": [\n                    \"#0000ff\",\n                    \"#000\"\n                ],\n                \"featured\": false,\n                \"freeShipping\": false,\n                \"inventory\": 0,\n                \"averageRating\": 0,\n                \"numberOfReviews\": 0,\n                \"user\": \"61bf1a9f28daa3c0f6ec992e\",\n                \"createdAt\": \"2021-12-26T02:27:24.595Z\",\n                \"updatedAt\": \"2021-12-26T02:27:24.595Z\",\n                \"__v\": 0,\n                \"id\": \"61c7d30c6e7c73d1b064e629\"\n            },\n            {\n                \"_id\": \"61c7d3196e7c73d1b064e62b\",\n                \"name\": \"accent chair\",\n                \"price\": 25999,\n                \"description\": \"Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge\",\n                \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n                \"category\": \"office\",\n                \"company\": \"marcos\",\n                \"colors\": [\n                    \"#ff0000\",\n                    \"#00ff00\",\n                    \"#0000ff\"\n                ],\n                \"featured\": false,\n                \"freeShipping\": false,\n                \"inventory\": 0,\n                \"averageRating\": 0,\n                \"numberOfReviews\": 0,\n                \"user\": \"61bf1a9f28daa3c0f6ec992e\",\n                \"createdAt\": \"2021-12-26T02:27:37.225Z\",\n                \"updatedAt\": \"2021-12-26T02:27:37.225Z\",\n                \"__v\": 0,\n                \"id\": \"61c7d3196e7c73d1b064e62b\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Single Product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/products/61bf246423f382b8b90913ad",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"products",
+								"61bf246423f382b8b90913ad"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Single Product",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/products/61bf246423f382b8b90913ad",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"products",
+										"61bf246423f382b8b90913ad"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1507"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5e3-SGuCCzUqBVvn71x0B5NnFjb/hIM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Dec 2021 00:31:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Product fetched successfully\",\n    \"data\": {\n        \"_id\": \"61bf246423f382b8b90913ad\",\n        \"name\": \"albany\",\n        \"description\": \"Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge\",\n        \"image\": \"https://dl.airtable.com/.attachmentThumbnails/0be1af59cf889899b5c9abb1e4db38a4/d631ac52\",\n        \"category\": \"kitchen\",\n        \"company\": \"liddy\",\n        \"colors\": [\n            \"#000\",\n            \"#ffb900\"\n        ],\n        \"featured\": false,\n        \"freeShipping\": false,\n        \"inventory\": 0,\n        \"averageRating\": 2,\n        \"user\": \"61bf1a9f28daa3c0f6ec992e\",\n        \"createdAt\": \"2021-12-19T12:24:04.234Z\",\n        \"updatedAt\": \"2021-12-26T00:30:26.961Z\",\n        \"__v\": 0,\n        \"numberOfReviews\": 2,\n        \"reviews\": [\n            {\n                \"_id\": \"61c79bbb36123482eeb9dfac\",\n                \"rating\": 1,\n                \"title\": \"Not as described\",\n                \"comment\": \"Product differs from description and image\",\n                \"user\": \"61bf19f23a6700691886b927\",\n                \"product\": \"61bf246423f382b8b90913ad\",\n                \"createdAt\": \"2021-12-25T22:31:23.286Z\",\n                \"updatedAt\": \"2021-12-25T22:31:23.286Z\",\n                \"__v\": 0\n            },\n            {\n                \"_id\": \"61c0364cd878a3024e9ae70b\",\n                \"rating\": 3,\n                \"title\": \"I love it\",\n                \"comment\": \"Very good product. Performance starting degrading after a month of use\",\n                \"user\": \"61bf1a9f28daa3c0f6ec992e\",\n                \"product\": \"61bf246423f382b8b90913ad\",\n                \"createdAt\": \"2021-12-20T07:52:44.576Z\",\n                \"updatedAt\": \"2021-12-26T00:30:26.511Z\",\n                \"__v\": 0\n            }\n        ],\n        \"id\": \"61bf246423f382b8b90913ad\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"albany\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/products/61bf246423f382b8b90913ad",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"products",
+								"61bf246423f382b8b90913ad"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Product",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"albany\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/products/61bf246423f382b8b90913ad",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"products",
+										"61bf246423f382b8b90913ad"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "852"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"354-3Ht7MmhSXyKiAZR1OKKjRBBAfxY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Dec 2021 13:39:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Product updated successfully\",\n    \"data\": {\n        \"_id\": \"61bf246423f382b8b90913ad\",\n        \"name\": \"albany\",\n        \"description\": \"Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge\",\n        \"image\": \"https://dl.airtable.com/.attachmentThumbnails/0be1af59cf889899b5c9abb1e4db38a4/d631ac52\",\n        \"category\": \"kitchen\",\n        \"company\": \"liddy\",\n        \"colors\": [\n            \"#000\",\n            \"#ffb900\"\n        ],\n        \"featured\": false,\n        \"freeShipping\": false,\n        \"inventory\": 0,\n        \"averageRating\": 0,\n        \"user\": \"61bf1a9f28daa3c0f6ec992e\",\n        \"createdAt\": \"2021-12-19T12:24:04.234Z\",\n        \"updatedAt\": \"2021-12-19T13:39:35.319Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/products/61bf245223f382b8b90913ab",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"products",
+								"61bf245223f382b8b90913ab"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Product",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/products/61bf245223f382b8b90913ab",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"products",
+										"61bf245223f382b8b90913ab"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"68-bRIe07YGA2wZj1/hhRHTkLCtx58\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 19 Dec 2021 13:19:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n    \"name\": \"accent chair\",\n    \"price\": 25999,\n    \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n    \"colors\": [\"#ff0000\", \"#00ff00\", \"#0000ff\"],\n    \"company\": \"marcos\",\n    \"description\": \"Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge\",\n    \"category\": \"office\"\n  }"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/products",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "  {\n    \"name\": \"accent chair\",\n    \"price\": 25999,\n    \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n    \"colors\": [\"#ff0000\", \"#00ff00\", \"#0000ff\"],\n    \"company\": \"marcos\",\n    \"description\": \"Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge\",\n    \"category\": \"office\"\n  }"
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/products",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "937"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3a9-RLUS4eKTvm6bLTFxyHkkbbkl/NA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Dec 2021 02:27:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Product created successfully\",\n    \"data\": {\n        \"name\": \"accent chair\",\n        \"price\": 25999,\n        \"description\": \"Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge\",\n        \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n        \"category\": \"office\",\n        \"company\": \"marcos\",\n        \"colors\": [\n            \"#ff0000\",\n            \"#00ff00\",\n            \"#0000ff\"\n        ],\n        \"featured\": false,\n        \"freeShipping\": false,\n        \"inventory\": 0,\n        \"averageRating\": 0,\n        \"numberOfReviews\": 0,\n        \"user\": \"61bf1a9f28daa3c0f6ec992e\",\n        \"_id\": \"61c7d3196e7c73d1b064e62b\",\n        \"createdAt\": \"2021-12-26T02:27:37.225Z\",\n        \"updatedAt\": \"2021-12-26T02:27:37.225Z\",\n        \"__v\": 0,\n        \"id\": \"61c7d3196e7c73d1b064e62b\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Upload Image",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/products/uploadImage",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"products",
+								"uploadImage"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Upload Image",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "productImage",
+											"type": "file",
+											"src": "/Users/gabrielilochi/Downloads/photo.jpeg"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/products/uploadImage",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"products",
+										"uploadImage"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "153"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"99-XW4vUs2HUQ2mmXJu7BB/rnHp5+s\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Dec 2021 12:01:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"secure_url\": \"https://res.cloudinary.com/dilckemex/image/upload/v1640520078/file-upload/tmp-1-1640520076296_opg1ne.jpg\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Review",
+			"item": [
+				{
+					"name": "Get All Review",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/reviews",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"reviews"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Review",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \n}"
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/reviews",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"reviews"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "504"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f8-t6iLAfcPQqhNO4aSYbej7b3uuPE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 25 Dec 2021 22:29:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Reviews fetched successfully\",\n    \"data\": {\n        \"total\": 1,\n        \"reviews\": [\n            {\n                \"_id\": \"61c0364cd878a3024e9ae70b\",\n                \"rating\": 4,\n                \"title\": \"I love it\",\n                \"comment\": \"Very good product. Performance starting degrading after a month of use\",\n                \"user\": {\n                    \"_id\": \"61bf1a9f28daa3c0f6ec992e\",\n                    \"name\": \"Gabriel Ilochi\"\n                },\n                \"product\": {\n                    \"_id\": \"61bf246423f382b8b90913ad\",\n                    \"name\": \"albany\",\n                    \"company\": \"liddy\",\n                    \"id\": \"61bf246423f382b8b90913ad\"\n                },\n                \"createdAt\": \"2021-12-20T07:52:44.576Z\",\n                \"updatedAt\": \"2021-12-20T07:56:46.732Z\",\n                \"__v\": 0\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Single Review",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/reviews/61c0364cd878a3024e9ae70b",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"reviews",
+								"61c0364cd878a3024e9ae70b"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Single Review",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \n}"
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/reviews/61c0364cd878a3024e9ae70b",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"reviews",
+										"61c0364cd878a3024e9ae70b"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "420"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a4-fvzxFUpIRTQhk/6uId404UtqD0Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Dec 2021 08:00:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"data\": {\n        \"_id\": \"61c0364cd878a3024e9ae70b\",\n        \"rating\": 4,\n        \"title\": \"I love it\",\n        \"comment\": \"Very good product. Performance starting degrading after a month of use\",\n        \"user\": {\n            \"_id\": \"61bf1a9f28daa3c0f6ec992e\",\n            \"name\": \"Gabriel Ilochi\"\n        },\n        \"product\": {\n            \"_id\": \"61bf246423f382b8b90913ad\",\n            \"name\": \"albany\",\n            \"company\": \"liddy\"\n        },\n        \"createdAt\": \"2021-12-20T07:52:44.576Z\",\n        \"updatedAt\": \"2021-12-20T07:56:46.732Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Review",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/reviews/61c0387357ca80b9526c1ede",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"reviews",
+								"61c0387357ca80b9526c1ede"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Review",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \n}"
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/reviews/61c0387357ca80b9526c1ede",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"reviews",
+										"61c0387357ca80b9526c1ede"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-XCt3Sr3tmNllb3VLKOcp4nAAcBc\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Dec 2021 08:02:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Update Review",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"rating\": 3,\n   \"comment\": \"Very good product. Performance starting degrading after a month of use\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/reviews/61c0364cd878a3024e9ae70b",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"reviews",
+								"61c0364cd878a3024e9ae70b"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Review",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"rating\": 3,\n   \"comment\": \"Very good product. Performance starting degrading after a month of use\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/reviews/61c0364cd878a3024e9ae70b",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"reviews",
+										"61c0364cd878a3024e9ae70b"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "346"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15a-AUqqE3Og6QtRxPyXChzutzjjIJE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Dec 2021 00:30:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"\",\n    \"data\": {\n        \"_id\": \"61c0364cd878a3024e9ae70b\",\n        \"rating\": 3,\n        \"title\": \"I love it\",\n        \"comment\": \"Very good product. Performance starting degrading after a month of use\",\n        \"user\": \"61bf1a9f28daa3c0f6ec992e\",\n        \"product\": \"61bf246423f382b8b90913ad\",\n        \"createdAt\": \"2021-12-20T07:52:44.576Z\",\n        \"updatedAt\": \"2021-12-26T00:30:26.511Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Review",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"rating\": 1,\n   \"title\": \"Not as described\",\n   \"comment\": \"Product differs from description and image\",\n   \"product\": \"61bf246423f382b8b90913ad\" \n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/reviews",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"reviews"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Review",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"rating\": 1,\n   \"title\": \"Not as described\",\n   \"comment\": \"Product differs from description and image\",\n   \"product\": \"61bf246423f382b8b90913ad\" \n}"
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/reviews",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"reviews"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-mk/GqYtV+LqpQiDtk9eVCKoPu9Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Dec 2021 00:21:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"You already left a review for this product\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Get Single Order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/orders/61c7e45f48122f7c4d76e212",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"orders",
+								"61c7e45f48122f7c4d76e212"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Single Order",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/orders/61c7e45f48122f7c4d76e212",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"orders",
+										"61c7e45f48122f7c4d76e212"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "749"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2ed-4gENkd4ijl/8RueIjNr7hK+LXoM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Dec 2021 12:03:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"\",\n    \"data\": {\n        \"_id\": \"61c7e45f48122f7c4d76e212\",\n        \"tax\": 399,\n        \"user\": \"61bf1a9f28daa3c0f6ec992e\",\n        \"shippingFee\": 499,\n        \"subtotal\": 34999,\n        \"total\": 35897,\n        \"orderItems\": [\n            {\n                \"name\": \"albany\",\n                \"image\": \"https://dl.airtable.com/.attachmentThumbnails/0be1af59cf889899b5c9abb1e4db38a4/d631ac52\",\n                \"price\": 3000,\n                \"quantity\": 3,\n                \"product\": \"61bf246423f382b8b90913ad\",\n                \"_id\": \"61c7e45f48122f7c4d76e213\"\n            },\n            {\n                \"name\": \"accent chair\",\n                \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n                \"price\": 25999,\n                \"quantity\": 1,\n                \"product\": \"61c7d3196e7c73d1b064e62b\",\n                \"_id\": \"61c7e45f48122f7c4d76e214\"\n            }\n        ],\n        \"status\": \"pending\",\n        \"clientSecret\": \"randomClientSecret\",\n        \"createdAt\": \"2021-12-26T03:41:19.468Z\",\n        \"updatedAt\": \"2021-12-26T03:41:19.468Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/orders",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Orders",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/orders",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "761"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f9-xJKHgmlnCMMCUQkorgp9L4fYrtM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Dec 2021 12:03:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"\",\n    \"total\": 1,\n    \"data\": [\n        {\n            \"_id\": \"61c7e45f48122f7c4d76e212\",\n            \"tax\": 399,\n            \"user\": \"61bf1a9f28daa3c0f6ec992e\",\n            \"shippingFee\": 499,\n            \"subtotal\": 34999,\n            \"total\": 35897,\n            \"orderItems\": [\n                {\n                    \"name\": \"albany\",\n                    \"image\": \"https://dl.airtable.com/.attachmentThumbnails/0be1af59cf889899b5c9abb1e4db38a4/d631ac52\",\n                    \"price\": 3000,\n                    \"quantity\": 3,\n                    \"product\": \"61bf246423f382b8b90913ad\",\n                    \"_id\": \"61c7e45f48122f7c4d76e213\"\n                },\n                {\n                    \"name\": \"accent chair\",\n                    \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n                    \"price\": 25999,\n                    \"quantity\": 1,\n                    \"product\": \"61c7d3196e7c73d1b064e62b\",\n                    \"_id\": \"61c7e45f48122f7c4d76e214\"\n                }\n            ],\n            \"status\": \"pending\",\n            \"clientSecret\": \"randomClientSecret\",\n            \"createdAt\": \"2021-12-26T03:41:19.468Z\",\n            \"updatedAt\": \"2021-12-26T03:41:19.468Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Current User Order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/orders/userOrders",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"orders",
+								"userOrders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Current User Order",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5000/api/v1/orders/userOrders",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"orders",
+										"userOrders"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-cOVWn9qyp4quvr3lOta9bqfP0pc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Dec 2021 12:06:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"You do not have any order yet.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tax\": 399,\n    \"shippingFee\": 499,\n    \"items\": [\n      {\n        \"name\": \"accent chair\",\n        \"price\": 2599,\n        \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n        \"quantity\": 3,\n        \"product\": \"61bf246423f382b8b90913ad\"\n      },\n            {\n        \"name\": \"accent chair\",\n        \"price\": 2599,\n        \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n        \"quantity\": 1,\n        \"product\": \"61c7d3196e7c73d1b064e62b\"\n      }\n    ]\n  }"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/orders",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Order",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"tax\": 399,\n    \"shippingFee\": 499,\n    \"items\": [\n      {\n        \"name\": \"accent chair\",\n        \"price\": 2599,\n        \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n        \"quantity\": 3,\n        \"product\": \"61bf246423f382b8b90913ad\"\n      },\n            {\n        \"name\": \"accent chair\",\n        \"price\": 2599,\n        \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n        \"quantity\": 1,\n        \"product\": \"61c7d3196e7c73d1b064e62b\"\n      }\n    ]\n  }"
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/orders",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "749"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2ed-Q5HqchhrCYU04n5uCzrmQP3V1w0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Dec 2021 03:41:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"\",\n    \"data\": {\n        \"tax\": 399,\n        \"user\": \"61bf1a9f28daa3c0f6ec992e\",\n        \"shippingFee\": 499,\n        \"subtotal\": 34999,\n        \"total\": 35897,\n        \"orderItems\": [\n            {\n                \"name\": \"albany\",\n                \"image\": \"https://dl.airtable.com/.attachmentThumbnails/0be1af59cf889899b5c9abb1e4db38a4/d631ac52\",\n                \"price\": 3000,\n                \"quantity\": 3,\n                \"product\": \"61bf246423f382b8b90913ad\",\n                \"_id\": \"61c7e45f48122f7c4d76e213\"\n            },\n            {\n                \"name\": \"accent chair\",\n                \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n                \"price\": 25999,\n                \"quantity\": 1,\n                \"product\": \"61c7d3196e7c73d1b064e62b\",\n                \"_id\": \"61c7e45f48122f7c4d76e214\"\n            }\n        ],\n        \"status\": \"pending\",\n        \"clientSecret\": \"randomClientSecret\",\n        \"_id\": \"61c7e45f48122f7c4d76e212\",\n        \"createdAt\": \"2021-12-26T03:41:19.468Z\",\n        \"updatedAt\": \"2021-12-26T03:41:19.468Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Order",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"status\": \"paid\",\n   \"paymentIntentId\": \"id\" \n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/orders/61c7e45f48122f7c4d76e212",
+							"host": [
+								"http://localhost:5000/api/v1"
+							],
+							"path": [
+								"orders",
+								"61c7e45f48122f7c4d76e212"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Order",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"status\": \"paid\",\n   \"paymentIntentId\": \"id\" \n}"
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/orders/61c7e45f48122f7c4d76e212",
+									"host": [
+										"http://localhost:5000/api/v1"
+									],
+									"path": [
+										"orders",
+										"61c7e45f48122f7c4d76e212"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "769"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"301-85wI6LGVXIYNi9S/bMknSbRFdsY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 Dec 2021 12:05:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 200,\n    \"message\": \"\",\n    \"data\": {\n        \"_id\": \"61c7e45f48122f7c4d76e212\",\n        \"tax\": 399,\n        \"user\": \"61bf1a9f28daa3c0f6ec992e\",\n        \"shippingFee\": 499,\n        \"subtotal\": 34999,\n        \"total\": 35897,\n        \"orderItems\": [\n            {\n                \"name\": \"albany\",\n                \"image\": \"https://dl.airtable.com/.attachmentThumbnails/0be1af59cf889899b5c9abb1e4db38a4/d631ac52\",\n                \"price\": 3000,\n                \"quantity\": 3,\n                \"product\": \"61bf246423f382b8b90913ad\",\n                \"_id\": \"61c7e45f48122f7c4d76e213\"\n            },\n            {\n                \"name\": \"accent chair\",\n                \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n                \"price\": 25999,\n                \"quantity\": 1,\n                \"product\": \"61c7d3196e7c73d1b064e62b\",\n                \"_id\": \"61c7e45f48122f7c4d76e214\"\n            }\n        ],\n        \"status\": \"paid\",\n        \"clientSecret\": \"randomClientSecret\",\n        \"createdAt\": \"2021-12-26T03:41:19.468Z\",\n        \"updatedAt\": \"2021-12-26T12:05:04.960Z\",\n        \"__v\": 0,\n        \"paymentIntentId\": \"id\"\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
