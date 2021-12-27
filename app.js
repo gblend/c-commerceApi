@@ -30,7 +30,7 @@ cloudinary.config({
 const app = express();
 app.use(helmet());
 app.use(xss());
-app.use(mongoSanitize);
+app.use(mongoSanitize());
 app.set('trust proxy', 1);
 app.use(
     rateLimit({
