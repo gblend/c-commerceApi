@@ -26,9 +26,9 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/register",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/register",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"register"
@@ -57,9 +57,9 @@
 									"raw": "{\n    \"email\": \"gabriel.ilochi@gmail.com\",\n    \"name\": \"Gabriel Ilochi\",\n    \"password\": \"password\"\n}"
 								},
 								"url": {
-									"raw": "http://localhost:5000/api/v1/register",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/register",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"register"
@@ -129,9 +129,9 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/login",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/login",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"login"
@@ -160,9 +160,9 @@
 									"raw": "{\n    \"email\":\"gabriel.ilochi@gmail.com\",\n    \"password\":\"password\"\n}"
 								},
 								"url": {
-									"raw": "http://localhost:5000/api/v1/login",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/login",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"login"
@@ -232,9 +232,9 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/logout",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/logout",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"logout"
@@ -259,9 +259,9 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:5000/api/v1/logout",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/logout",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"logout"
@@ -323,9 +323,9 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/users",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/users",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"users"
@@ -345,9 +345,9 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:5000/api/v1/users",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/users",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"users"
@@ -408,9 +408,9 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/users/updateUserPassword",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/users/updateUserPassword",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"users",
@@ -432,9 +432,9 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/users/admins",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/users/admins",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"users",
@@ -455,9 +455,9 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:5000/api/v1/users/admins",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/users/admins",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"users",
@@ -519,9 +519,9 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/users/61b8ce201620c882d2b6f4a4",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/users/61b8ce201620c882d2b6f4a4",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"users",
@@ -542,9 +542,9 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:5000/api/v1/users/61b8ce201620c882d2b6f4a4",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/users/61b8ce201620c882d2b6f4a4",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"users",
@@ -610,9 +610,9 @@
 							"raw": "{\n        \"name\": \"Gabriel Ilochi C.\",\n        \"email\": \"gabriel@gmail.com\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/v1/users/61b8c3fd56f5af99f6e5e07d",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/users/61b8c3fd56f5af99f6e5e07d",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"users",
@@ -637,9 +637,9 @@
 									"raw": "{\n        \"name\": \"Gabriel Ilochi C.\",\n        \"email\": \"gabriel@gmail.com\"\n}"
 								},
 								"url": {
-									"raw": "http://localhost:5000/api/v1/users/61b8c3fd56f5af99f6e5e07d",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/users/61b8c3fd56f5af99f6e5e07d",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"users",
@@ -705,9 +705,9 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/users/me",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/users/me",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"users",
@@ -728,9 +728,9 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:5000/api/v1/users/me",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/users/me",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"users",
@@ -802,9 +802,9 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/products",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/products",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"products"
@@ -829,9 +829,9 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:5000/api/v1/products",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/products",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"products"
@@ -897,9 +897,9 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/products/61bf246423f382b8b90913ad",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/products/61bf246423f382b8b90913ad",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"products",
@@ -925,9 +925,9 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:5000/api/v1/products/61bf246423f382b8b90913ad",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/products/61bf246423f382b8b90913ad",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"products",
@@ -998,9 +998,9 @@
 							"raw": "{\n    \"name\": \"albany\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/v1/products/61bf246423f382b8b90913ad",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/products/61bf246423f382b8b90913ad",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"products",
@@ -1030,9 +1030,9 @@
 									"raw": "{\n    \"name\": \"albany\"\n}"
 								},
 								"url": {
-									"raw": "http://localhost:5000/api/v1/products/61bf246423f382b8b90913ad",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/products/61bf246423f382b8b90913ad",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"products",
@@ -1099,9 +1099,9 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/products/61bf245223f382b8b90913ab",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/products/61bf245223f382b8b90913ab",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"products",
@@ -1127,9 +1127,9 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:5000/api/v1/products/61bf245223f382b8b90913ab",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/products/61bf245223f382b8b90913ab",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"products",
@@ -1192,9 +1192,9 @@
 							"raw": "  {\n    \"name\": \"accent chair\",\n    \"price\": 25999,\n    \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n    \"colors\": [\"#ff0000\", \"#00ff00\", \"#0000ff\"],\n    \"company\": \"marcos\",\n    \"description\": \"Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge\",\n    \"category\": \"office\"\n  }"
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/v1/products",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/products",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"products"
@@ -1223,9 +1223,9 @@
 									"raw": "  {\n    \"name\": \"accent chair\",\n    \"price\": 25999,\n    \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n    \"colors\": [\"#ff0000\", \"#00ff00\", \"#0000ff\"],\n    \"company\": \"marcos\",\n    \"description\": \"Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge\",\n    \"category\": \"office\"\n  }"
 								},
 								"url": {
-									"raw": "http://localhost:5000/api/v1/products",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/products",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"products"
@@ -1291,9 +1291,9 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/products/uploadImage",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/products/uploadImage",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"products",
@@ -1329,9 +1329,9 @@
 									]
 								},
 								"url": {
-									"raw": "http://localhost:5000/api/v1/products/uploadImage",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/products/uploadImage",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"products",
@@ -1410,9 +1410,9 @@
 							"raw": "{\n    \n}"
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/v1/reviews",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"reviews"
@@ -1441,9 +1441,9 @@
 									"raw": "{\n    \n}"
 								},
 								"url": {
-									"raw": "http://localhost:5000/api/v1/reviews",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"reviews"
@@ -1516,9 +1516,9 @@
 							"raw": "{\n    \n}"
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/v1/reviews/61c0364cd878a3024e9ae70b",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews/61c0364cd878a3024e9ae70b",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"reviews",
@@ -1548,9 +1548,9 @@
 									"raw": "{\n    \n}"
 								},
 								"url": {
-									"raw": "http://localhost:5000/api/v1/reviews/61c0364cd878a3024e9ae70b",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews/61c0364cd878a3024e9ae70b",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"reviews",
@@ -1621,9 +1621,9 @@
 							"raw": "{\n    \n}"
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/v1/reviews/61c0387357ca80b9526c1ede",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews/61c0387357ca80b9526c1ede",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"reviews",
@@ -1653,9 +1653,9 @@
 									"raw": "{\n    \n}"
 								},
 								"url": {
-									"raw": "http://localhost:5000/api/v1/reviews/61c0387357ca80b9526c1ede",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews/61c0387357ca80b9526c1ede",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"reviews",
@@ -1718,9 +1718,9 @@
 							"raw": "{\n   \"rating\": 3,\n   \"comment\": \"Very good product. Performance starting degrading after a month of use\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/v1/reviews/61c0364cd878a3024e9ae70b",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews/61c0364cd878a3024e9ae70b",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"reviews",
@@ -1750,9 +1750,9 @@
 									"raw": "{\n   \"rating\": 3,\n   \"comment\": \"Very good product. Performance starting degrading after a month of use\"\n}"
 								},
 								"url": {
-									"raw": "http://localhost:5000/api/v1/reviews/61c0364cd878a3024e9ae70b",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews/61c0364cd878a3024e9ae70b",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"reviews",
@@ -1823,9 +1823,9 @@
 							"raw": "{\n   \"rating\": 1,\n   \"title\": \"Not as described\",\n   \"comment\": \"Product differs from description and image\",\n   \"product\": \"61bf246423f382b8b90913ad\" \n}"
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/v1/reviews",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"reviews"
@@ -1854,9 +1854,9 @@
 									"raw": "{\n   \"rating\": 1,\n   \"title\": \"Not as described\",\n   \"comment\": \"Product differs from description and image\",\n   \"product\": \"61bf246423f382b8b90913ad\" \n}"
 								},
 								"url": {
-									"raw": "http://localhost:5000/api/v1/reviews",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"reviews"
@@ -1927,9 +1927,9 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/orders/61c7e45f48122f7c4d76e212",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders/61c7e45f48122f7c4d76e212",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"orders",
@@ -1955,9 +1955,9 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:5000/api/v1/orders/61c7e45f48122f7c4d76e212",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders/61c7e45f48122f7c4d76e212",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"orders",
@@ -2024,9 +2024,9 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/orders",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"orders"
@@ -2051,9 +2051,9 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:5000/api/v1/orders",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"orders"
@@ -2119,9 +2119,9 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:5000/api/v1/orders/userOrders",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders/userOrders",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"orders",
@@ -2147,9 +2147,9 @@
 									}
 								],
 								"url": {
-									"raw": "http://localhost:5000/api/v1/orders/userOrders",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders/userOrders",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"orders",
@@ -2220,9 +2220,9 @@
 							"raw": "{\n    \"tax\": 399,\n    \"shippingFee\": 499,\n    \"items\": [\n      {\n        \"name\": \"accent chair\",\n        \"price\": 2599,\n        \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n        \"quantity\": 3,\n        \"product\": \"61bf246423f382b8b90913ad\"\n      },\n            {\n        \"name\": \"accent chair\",\n        \"price\": 2599,\n        \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n        \"quantity\": 1,\n        \"product\": \"61c7d3196e7c73d1b064e62b\"\n      }\n    ]\n  }"
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/v1/orders",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"orders"
@@ -2251,9 +2251,9 @@
 									"raw": "{\n    \"tax\": 399,\n    \"shippingFee\": 499,\n    \"items\": [\n      {\n        \"name\": \"accent chair\",\n        \"price\": 2599,\n        \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n        \"quantity\": 3,\n        \"product\": \"61bf246423f382b8b90913ad\"\n      },\n            {\n        \"name\": \"accent chair\",\n        \"price\": 2599,\n        \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n        \"quantity\": 1,\n        \"product\": \"61c7d3196e7c73d1b064e62b\"\n      }\n    ]\n  }"
 								},
 								"url": {
-									"raw": "http://localhost:5000/api/v1/orders",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"orders"
@@ -2323,9 +2323,9 @@
 							"raw": "{\n   \"status\": \"paid\",\n   \"paymentIntentId\": \"id\" \n}"
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/v1/orders/61c7e45f48122f7c4d76e212",
+							"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders/61c7e45f48122f7c4d76e212",
 							"host": [
-								"http://localhost:5000/api/v1"
+								"https://ccommerce-api.herokuapp.com/api/v1"
 							],
 							"path": [
 								"orders",
@@ -2355,9 +2355,9 @@
 									"raw": "{\n   \"status\": \"paid\",\n   \"paymentIntentId\": \"id\" \n}"
 								},
 								"url": {
-									"raw": "http://localhost:5000/api/v1/orders/61c7e45f48122f7c4d76e212",
+									"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders/61c7e45f48122f7c4d76e212",
 									"host": [
-										"http://localhost:5000/api/v1"
+										"https://ccommerce-api.herokuapp.com/api/v1"
 									],
 									"path": [
 										"orders",
