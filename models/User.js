@@ -96,6 +96,12 @@ UserSchema.methods.createJWT = function () {
     return createJWT(payload);
 }
 
+UserSchema.methods.createRefreshJWT = function (user, refreshToken) {
+    const userPayload = {name:user.name, id:user._id, role:user.role}
+    return createJWT({user:userPayload, refreshToken});
+
+}
+
 UserSchema.methods.comparePassword =  function (enteredPassword) {
     return bcrypt.compare(enteredPassword, this.password);
 }
