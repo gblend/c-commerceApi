@@ -1,7 +1,9 @@
 const {User, validateUserSchema, validateLogin} = require('../models/User');
 const { StatusCodes } = require('http-status-codes');
 const { CustomAPIError, UnauthenticatedError, BadRequestError } = require('../errors');
-const { attachCookiesToResponse } = require('../utils');
+const { attachCookiesToResponse, sendVerificationEmail } = require('../utils');
+const {generateToken} = require("../utils/verificationToken");
+const {Token} = require("../models/Token");
 
 const register = async (req, res) => {
     const { email, name, password } = req.body;
@@ -10,7 +12,7 @@ const register = async (req, res) => {
         return res.status(StatusCodes.BAD_REQUEST).json({ status: 'error', message: '', errors: error.details[0].message.split('\"').join('') });
     }
 
-    const isEmailExist = await User.findOne( { email }) ;
+    const isEmailExist = await User.findOne( { email });
     if (isEmailExist) {
         throw new CustomAPIError('This email address is already in use');
     }
@@ -18,15 +20,21 @@ const register = async (req, res) => {
     const isAdminExists = (await User.countDocuments( {role: 'admin'})) === 0;
     const role = isAdminExists ? 'admin' : 'user';
 
-    const user = await User.create({ email, name, password, role});
-    const token = await user.createJWT();
+    const verificationToken = generateToken();
+    const user = await User.create({ email, name, password, role, verificationToken});
+    const accessTokenJWT = await user.createJWT();
+    // @TODO: use queue for this operation
+    await sendVerificationEmail({name:user.name, email:user.email, verificationToken:user.verificationToken});
     user.password = undefined;
 
-    attachCookiesToResponse(token, res);
-    return res.status(StatusCodes.CREATED).json({ status: 'success', message: 'Account created successfully', token, data: user });
+    const tokenInfo = await saveTokenInfo(user, req);
+    const refreshTokenJWT = await user.createRefreshJWT(user, tokenInfo.refreshToken);
+    attachCookiesToResponse({accessTokenJWT, refreshTokenJWT, res});
+    return res.status(StatusCodes.CREATED).json({ status: 'success', message: 'Please check your email for a link to verify your account', token: accessTokenJWT, refreshToken: refreshTokenJWT, data: user});
 }
 
 const login = async (req, res) => {
+    let verificationMsg = '';
     const { error } = validateLogin(req.body);
     if (error) {
         return res.status(StatusCodes.BAD_REQUEST).json({ status: 'failed', message: '', errors: error.details[0].message.split('\"').join('') });
@@ -42,23 +50,66 @@ const login = async (req, res) => {
     if (!isMatch) {
         throw new UnauthenticatedError('Invalid email or password');
     }
+    if(!user.isVerified) {
+        verificationMsg = 'Please verify your email to get full access to your account capabilities';
+    }
 
-    const token = await user.createJWT();
+    const accessTokenJWT = await user.createJWT();
     user.password = undefined;
-    attachCookiesToResponse(token, res);
-    return res.json({ status: 'success', message: 'Login successful', token, data: user });
+    const tokenInfo = await saveTokenInfo(user, req);
+    const refreshTokenJWT = await user.createRefreshJWT(user, tokenInfo.refreshToken);
+
+    attachCookiesToResponse({accessTokenJWT, refreshTokenJWT, res});
+    return res.json({ status: 'success', message: 'Login successful', token: accessTokenJWT, refreshToken: refreshTokenJWT, data: user, verificationMsg });
 }
 
 const logout = async (req, res) => {
-    req.cookies.token = undefined;
+    await Token.findOneAndDelete({user: req.user.id});
+
+    req.signedCookies.accessToken = undefined;
+    req.signedCookies.refreshToken = undefined;
     req.user = undefined
-    res.clearCookie('token');
+    res.clearCookie('accessToken');
+    res.clearCookie('refreshToken');
 
     res.status(StatusCodes.NO_CONTENT).json({status: 'success', message: 'Logout successful', data: {}});
+}
+
+const verifyEmail = async (req, res) => {
+    const { email, token} = req.body;
+    const user = await User.findOne({ email});
+    if (!user) {
+        throw new UnauthenticatedError('Verification failed');
+    }
+    if (user.verificationToken !== token) {
+        throw new UnauthenticatedError('Verification failed, invalid token');
+    }
+
+    user.isVerified = true;
+    user.verificationToken = '';
+    user.verified = Date.now();
+    user.save();
+    res.status(StatusCodes.OK).json({ status: 'success', message: 'Email successfully verified'});
+}
+
+const saveTokenInfo = async ({_id:userId}, req) => {
+    const isTokenExist = await Token.findOne({user:userId});
+    if(isTokenExist) {
+        if(!isTokenExist.isValid) {
+            throw new UnauthenticatedError('Invalid credentials');
+        }
+        return isTokenExist;
+    }
+    const refreshToken = generateToken();
+    const userAgent = req.headers['user-agent'];
+    const ip = req.ip;
+    const userToken = {refreshToken, ip, userAgent, user: userId};
+    return Token.create(userToken);
 }
 
 module.exports = {
     register,
     logout,
-    login
+    login,
+    verifyEmail
 }
