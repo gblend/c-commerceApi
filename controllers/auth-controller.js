@@ -97,6 +97,28 @@ const forgotPassword = async (req, res) => {
     res.status(StatusCodes.OK).json({status: 'success', message: 'Please check your email for reset link'});
 }
 
+const resetPassword = async (req, res) => {
+    const {email, token, password} = req.body;
+    if (!email || !token || !password) {
+        throw new BadRequestError('Please provide all values');
+    }
+
+    const user = await User.findOne({email});
+    if (user) {
+        const currentDate = new Date();
+        if(user.passwordTokenExpirationDate < currentDate) {
+            throw new BadRequestError('Password reset link has expired');
+        }
+        if(user.passwordToken === createHash(token)) {
+           user.passwordTokenExpirationDate = null;
+           user.passwordToken = '';
+           user.password = password;
+           await user.save();
+        }
+    }
+    res.status(StatusCodes.OK).json({status: 'success', message: 'Password changed successfully. Redirecting to login page'});
+}
+
 const verifyEmail = async (req, res) => {
     const { email, token} = req.body;
     const user = await User.findOne({ email});
@@ -133,6 +155,7 @@ module.exports = {
     register,
     logout,
     login,
+    resetPassword,
     forgotPassword,
     verifyEmail
 }
