@@ -8,22 +8,35 @@ const UserSchema = new Schema({
     name: {
         type: String,
         minlength: 3,
-        // required: [true, 'name is required'],
     },
     email: {
         type: String,
         unique: true,
-        // required: [true, 'email is required'],
     },
     password: {
         type: String,
         minlength: 8,
-        // required: [true, 'password is required'],
     },
     role: {
         type: String,
         enum: ['admin', 'user'],
         default: 'user'
+    },
+    verificationToken: {
+        type: String,
+    },
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
+    verified: {
+        type: Date
+    },
+    passwordToken: {
+        type: String
+    },
+    passwordTokenExpirationDate: {
+        type: Date
     }
 }, {timestamps: true});
 
