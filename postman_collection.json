@@ -25,12 +25,17 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"gabrielilochi@my1.com\",\n    \"name\": \"Gabriel Ilochi\",\n    \"password\": \"password\"\n}"
+						},
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/register",
+							"raw": "https://ccommerce-api.herokuapp.com/auth/register",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
+								"auth",
 								"register"
 							]
 						}
@@ -57,9 +62,9 @@
 									"raw": "{\n    \"email\": \"gabriel.ilochi@gmail.com\",\n    \"name\": \"Gabriel Ilochi\",\n    \"password\": \"password\"\n}"
 								},
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/register",
+									"raw": "https://ccommerce-api.herokuapp.com/register",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"register"
@@ -128,12 +133,17 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"gabrielilochi@my.com\",\n    \"password\":\"password\"\n}"
+						},
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/login",
+							"raw": "https://ccommerce-api.herokuapp.com/auth/login",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
+								"auth",
 								"login"
 							]
 						}
@@ -160,9 +170,9 @@
 									"raw": "{\n    \"email\":\"gabriel.ilochi@gmail.com\",\n    \"password\":\"password\"\n}"
 								},
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/login",
+									"raw": "https://ccommerce-api.herokuapp.com/login",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"login"
@@ -216,9 +226,467 @@
 					]
 				},
 				{
+					"name": "Verify Email",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"token\":\"255fa005d97531ab44334ef42fceaef33e01e20153a68182c474c541a211\",\n\"email\":\"gabrielilochi@my.com\"\n}"
+						},
+						"url": {
+							"raw": "https://ccommerce-api.herokuapp.com/auth/verify-email",
+							"host": [
+								"https://ccommerce-api.herokuapp.com"
+							],
+							"path": [
+								"auth",
+								"verify-email"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Verify Email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"token\":\"255fa005d97531ab44334ef42fceaef33e01e20153a68182c474c541a211\",\n\"email\":\"gabrielilochi@my.com\"\n}"
+								},
+								"url": {
+									"raw": "https://ccommerce-api.herokuapp.com/verify-email",
+									"host": [
+										"https://ccommerce-api.herokuapp.com"
+									],
+									"path": [
+										"verify-email"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Dec 2021 10:31:37 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1640688389"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "60"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c-4faHia8R+MrSBk1N+W/bqhW4QXQ\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Email successfully verified\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"token\":\"b35107537bc086c227b77ba9d6dada092da08325e07d1df734edda760f746c8c7fd6442e6e30fefd\",\n\"email\":\"gabrielilochi@my.com\",\n\"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "https://ccommerce-api.herokuapp.com/auth/reset-password",
+							"host": [
+								"https://ccommerce-api.herokuapp.com"
+							],
+							"path": [
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Reset Password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"token\":\"b35107537bc086c227b77ba9d6dada092da08325e07d1df734edda760f746c8c7fd6442e6e30fefd\",\n\"email\":\"gabrielilochi@my.com\",\n\"password\": \"password\"\n}"
+								},
+								"url": {
+									"raw": "https://ccommerce-api.herokuapp.com/auth/reset-password",
+									"host": [
+										"https://ccommerce-api.herokuapp.com"
+									],
+									"path": [
+										"auth",
+										"reset-password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Dec 2021 02:49:36 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1640746754"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"59-PTQGHgh5AygeHUjrqPcaESeYmK4\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Password changed successfully. Redirecting to login page\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"email\":\"gabrielilochi@my.com\"\n}"
+						},
+						"url": {
+							"raw": "https://ccommerce-api.herokuapp.com/auth/forgot-password",
+							"host": [
+								"https://ccommerce-api.herokuapp.com"
+							],
+							"path": [
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Forgot Password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"email\":\"gabrielilochi@my.com\"\n}"
+								},
+								"url": {
+									"raw": "https://ccommerce-api.herokuapp.com/auth/forgot-password",
+									"host": [
+										"https://ccommerce-api.herokuapp.com"
+									],
+									"path": [
+										"auth",
+										"forgot-password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 29 Dec 2021 02:44:52 GMT"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1640746754"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-9uGJ3Zx955PNRuX7DcFWK76YBP4\""
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Please check your email for reset link\"\n}"
+						}
+					]
+				},
+				{
 					"name": "Logout",
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [
 							{
 								"key": "Accept",
@@ -232,11 +700,12 @@
 							}
 						],
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/logout",
+							"raw": "https://ccommerce-api.herokuapp.com/auth/logout",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
+								"auth",
 								"logout"
 							]
 						}
@@ -259,9 +728,9 @@
 									}
 								],
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/logout",
+									"raw": "https://ccommerce-api.herokuapp.com/logout",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"logout"
@@ -323,9 +792,9 @@
 							}
 						],
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/users",
+							"raw": "https://ccommerce-api.herokuapp.com/users",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"users"
@@ -345,9 +814,9 @@
 									}
 								],
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/users",
+									"raw": "https://ccommerce-api.herokuapp.com/users",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"users"
@@ -407,10 +876,14 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"newPassword\": \"password\",\n    \"oldPassword\": \"password\"\n}"
+						},
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/users/updateUserPassword",
+							"raw": "https://ccommerce-api.herokuapp.com/users/updateUserPassword",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"users",
@@ -432,9 +905,9 @@
 							}
 						],
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/users/admins",
+							"raw": "https://ccommerce-api.herokuapp.com/users/admins",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"users",
@@ -455,9 +928,9 @@
 									}
 								],
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/users/admins",
+									"raw": "https://ccommerce-api.herokuapp.com/users/admins",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"users",
@@ -519,9 +992,9 @@
 							}
 						],
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/users/61b8ce201620c882d2b6f4a4",
+							"raw": "https://ccommerce-api.herokuapp.com/users/61b8ce201620c882d2b6f4a4",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"users",
@@ -542,9 +1015,9 @@
 									}
 								],
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/users/61b8ce201620c882d2b6f4a4",
+									"raw": "https://ccommerce-api.herokuapp.com/users/61b8ce201620c882d2b6f4a4",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"users",
@@ -610,9 +1083,9 @@
 							"raw": "{\n        \"name\": \"Gabriel Ilochi C.\",\n        \"email\": \"gabriel@gmail.com\"\n}"
 						},
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/users/61b8c3fd56f5af99f6e5e07d",
+							"raw": "https://ccommerce-api.herokuapp.com/users/61b8c3fd56f5af99f6e5e07d",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"users",
@@ -637,9 +1110,9 @@
 									"raw": "{\n        \"name\": \"Gabriel Ilochi C.\",\n        \"email\": \"gabriel@gmail.com\"\n}"
 								},
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/users/61b8c3fd56f5af99f6e5e07d",
+									"raw": "https://ccommerce-api.herokuapp.com/users/61b8c3fd56f5af99f6e5e07d",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"users",
@@ -705,9 +1178,9 @@
 							}
 						],
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/users/me",
+							"raw": "https://ccommerce-api.herokuapp.com/users/me",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"users",
@@ -728,9 +1201,9 @@
 									}
 								],
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/users/me",
+									"raw": "https://ccommerce-api.herokuapp.com/users/me",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"users",
@@ -802,9 +1275,9 @@
 							}
 						],
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/products",
+							"raw": "https://ccommerce-api.herokuapp.com/products",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"products"
@@ -829,9 +1302,9 @@
 									}
 								],
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/products",
+									"raw": "https://ccommerce-api.herokuapp.com/products",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"products"
@@ -897,9 +1370,9 @@
 							}
 						],
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/products/61bf246423f382b8b90913ad",
+							"raw": "https://ccommerce-api.herokuapp.com/products/61bf246423f382b8b90913ad",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"products",
@@ -925,9 +1398,9 @@
 									}
 								],
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/products/61bf246423f382b8b90913ad",
+									"raw": "https://ccommerce-api.herokuapp.com/products/61bf246423f382b8b90913ad",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"products",
@@ -998,9 +1471,9 @@
 							"raw": "{\n    \"name\": \"albany\"\n}"
 						},
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/products/61bf246423f382b8b90913ad",
+							"raw": "https://ccommerce-api.herokuapp.com/products/61bf246423f382b8b90913ad",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"products",
@@ -1030,9 +1503,9 @@
 									"raw": "{\n    \"name\": \"albany\"\n}"
 								},
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/products/61bf246423f382b8b90913ad",
+									"raw": "https://ccommerce-api.herokuapp.com/products/61bf246423f382b8b90913ad",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"products",
@@ -1099,9 +1572,9 @@
 							}
 						],
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/products/61bf245223f382b8b90913ab",
+							"raw": "https://ccommerce-api.herokuapp.com/products/61bf245223f382b8b90913ab",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"products",
@@ -1127,9 +1600,9 @@
 									}
 								],
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/products/61bf245223f382b8b90913ab",
+									"raw": "https://ccommerce-api.herokuapp.com/products/61bf245223f382b8b90913ab",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"products",
@@ -1189,12 +1662,12 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "  {\n    \"name\": \"accent chair\",\n    \"price\": 25999,\n    \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n    \"colors\": [\"#ff0000\", \"#00ff00\", \"#0000ff\"],\n    \"company\": \"marcos\",\n    \"description\": \"Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge\",\n    \"category\": \"office\"\n  }"
+							"raw": "  {\n    \"name\": \"Apple iwatch\",\n    \"price\": 2950,\n    \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n    \"colors\": [\"#ff0000\", \"#00ff00\", \"#0000ff\"],\n    \"company\": \"marcos\",\n    \"description\": \"Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge\",\n    \"category\": \"office\"\n  }"
 						},
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/products",
+							"raw": "https://ccommerce-api.herokuapp.com/products",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"products"
@@ -1223,9 +1696,9 @@
 									"raw": "  {\n    \"name\": \"accent chair\",\n    \"price\": 25999,\n    \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n    \"colors\": [\"#ff0000\", \"#00ff00\", \"#0000ff\"],\n    \"company\": \"marcos\",\n    \"description\": \"Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge\",\n    \"category\": \"office\"\n  }"
 								},
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/products",
+									"raw": "https://ccommerce-api.herokuapp.com/products",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"products"
@@ -1290,10 +1763,20 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "productImage",
+									"type": "file",
+									"src": "/Users/gabrielilochi/Downloads/photo.jpeg"
+								}
+							]
+						},
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/products/uploadImage",
+							"raw": "https://ccommerce-api.herokuapp.com/products/uploadImage",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"products",
@@ -1329,9 +1812,9 @@
 									]
 								},
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/products/uploadImage",
+									"raw": "https://ccommerce-api.herokuapp.com/products/uploadImage",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"products",
@@ -1410,9 +1893,9 @@
 							"raw": "{\n    \n}"
 						},
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews",
+							"raw": "https://ccommerce-api.herokuapp.com/reviews",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"reviews"
@@ -1441,9 +1924,9 @@
 									"raw": "{\n    \n}"
 								},
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews",
+									"raw": "https://ccommerce-api.herokuapp.com/reviews",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"reviews"
@@ -1516,9 +1999,9 @@
 							"raw": "{\n    \n}"
 						},
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews/61c0364cd878a3024e9ae70b",
+							"raw": "https://ccommerce-api.herokuapp.com/reviews/61c0364cd878a3024e9ae70b",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"reviews",
@@ -1548,9 +2031,9 @@
 									"raw": "{\n    \n}"
 								},
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews/61c0364cd878a3024e9ae70b",
+									"raw": "https://ccommerce-api.herokuapp.com/reviews/61c0364cd878a3024e9ae70b",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"reviews",
@@ -1621,9 +2104,9 @@
 							"raw": "{\n    \n}"
 						},
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews/61c0387357ca80b9526c1ede",
+							"raw": "https://ccommerce-api.herokuapp.com/reviews/61c0387357ca80b9526c1ede",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"reviews",
@@ -1653,9 +2136,9 @@
 									"raw": "{\n    \n}"
 								},
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews/61c0387357ca80b9526c1ede",
+									"raw": "https://ccommerce-api.herokuapp.com/reviews/61c0387357ca80b9526c1ede",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"reviews",
@@ -1718,9 +2201,9 @@
 							"raw": "{\n   \"rating\": 3,\n   \"comment\": \"Very good product. Performance starting degrading after a month of use\"\n}"
 						},
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews/61c0364cd878a3024e9ae70b",
+							"raw": "https://ccommerce-api.herokuapp.com/reviews/61c0364cd878a3024e9ae70b",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"reviews",
@@ -1750,9 +2233,9 @@
 									"raw": "{\n   \"rating\": 3,\n   \"comment\": \"Very good product. Performance starting degrading after a month of use\"\n}"
 								},
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews/61c0364cd878a3024e9ae70b",
+									"raw": "https://ccommerce-api.herokuapp.com/reviews/61c0364cd878a3024e9ae70b",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"reviews",
@@ -1823,9 +2306,9 @@
 							"raw": "{\n   \"rating\": 1,\n   \"title\": \"Not as described\",\n   \"comment\": \"Product differs from description and image\",\n   \"product\": \"61bf246423f382b8b90913ad\" \n}"
 						},
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews",
+							"raw": "https://ccommerce-api.herokuapp.com/reviews",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"reviews"
@@ -1854,9 +2337,9 @@
 									"raw": "{\n   \"rating\": 1,\n   \"title\": \"Not as described\",\n   \"comment\": \"Product differs from description and image\",\n   \"product\": \"61bf246423f382b8b90913ad\" \n}"
 								},
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/reviews",
+									"raw": "https://ccommerce-api.herokuapp.com/reviews",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"reviews"
@@ -1927,9 +2410,9 @@
 							}
 						],
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders/61c7e45f48122f7c4d76e212",
+							"raw": "https://ccommerce-api.herokuapp.com/orders/61c7e45f48122f7c4d76e212",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"orders",
@@ -1955,9 +2438,9 @@
 									}
 								],
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders/61c7e45f48122f7c4d76e212",
+									"raw": "https://ccommerce-api.herokuapp.com/orders/61c7e45f48122f7c4d76e212",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"orders",
@@ -2024,9 +2507,9 @@
 							}
 						],
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders",
+							"raw": "https://ccommerce-api.herokuapp.com/orders",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"orders"
@@ -2051,9 +2534,9 @@
 									}
 								],
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders",
+									"raw": "https://ccommerce-api.herokuapp.com/orders",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"orders"
@@ -2119,9 +2602,9 @@
 							}
 						],
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders/userOrders",
+							"raw": "https://ccommerce-api.herokuapp.com/orders/userOrders",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"orders",
@@ -2147,9 +2630,9 @@
 									}
 								],
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders/userOrders",
+									"raw": "https://ccommerce-api.herokuapp.com/orders/userOrders",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"orders",
@@ -2220,9 +2703,9 @@
 							"raw": "{\n    \"tax\": 399,\n    \"shippingFee\": 499,\n    \"items\": [\n      {\n        \"name\": \"accent chair\",\n        \"price\": 2599,\n        \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n        \"quantity\": 3,\n        \"product\": \"61bf246423f382b8b90913ad\"\n      },\n            {\n        \"name\": \"accent chair\",\n        \"price\": 2599,\n        \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n        \"quantity\": 1,\n        \"product\": \"61c7d3196e7c73d1b064e62b\"\n      }\n    ]\n  }"
 						},
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders",
+							"raw": "https://ccommerce-api.herokuapp.com/orders",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"orders"
@@ -2251,9 +2734,9 @@
 									"raw": "{\n    \"tax\": 399,\n    \"shippingFee\": 499,\n    \"items\": [\n      {\n        \"name\": \"accent chair\",\n        \"price\": 2599,\n        \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n        \"quantity\": 3,\n        \"product\": \"61bf246423f382b8b90913ad\"\n      },\n            {\n        \"name\": \"accent chair\",\n        \"price\": 2599,\n        \"image\": \"https://dl.airtable.com/.attachmentThumbnails/e8bc3791196535af65f40e36993b9e1f/438bd160\",\n        \"quantity\": 1,\n        \"product\": \"61c7d3196e7c73d1b064e62b\"\n      }\n    ]\n  }"
 								},
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders",
+									"raw": "https://ccommerce-api.herokuapp.com/orders",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"orders"
@@ -2323,9 +2806,9 @@
 							"raw": "{\n   \"status\": \"paid\",\n   \"paymentIntentId\": \"id\" \n}"
 						},
 						"url": {
-							"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders/61c7e45f48122f7c4d76e212",
+							"raw": "https://ccommerce-api.herokuapp.com/orders/61c7e45f48122f7c4d76e212",
 							"host": [
-								"https://ccommerce-api.herokuapp.com/api/v1"
+								"https://ccommerce-api.herokuapp.com"
 							],
 							"path": [
 								"orders",
@@ -2355,9 +2838,9 @@
 									"raw": "{\n   \"status\": \"paid\",\n   \"paymentIntentId\": \"id\" \n}"
 								},
 								"url": {
-									"raw": "https://ccommerce-api.herokuapp.com/api/v1/orders/61c7e45f48122f7c4d76e212",
+									"raw": "https://ccommerce-api.herokuapp.com/orders/61c7e45f48122f7c4d76e212",
 									"host": [
-										"https://ccommerce-api.herokuapp.com/api/v1"
+										"https://ccommerce-api.herokuapp.com"
 									],
 									"path": [
 										"orders",
