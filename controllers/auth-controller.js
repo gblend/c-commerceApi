@@ -1,7 +1,7 @@
 const {User, validateUserSchema, validateLogin} = require('../models/User');
 const { StatusCodes } = require('http-status-codes');
 const { CustomAPIError, UnauthenticatedError, BadRequestError } = require('../errors');
-const { attachCookiesToResponse, sendVerificationEmail } = require('../utils');
+const { attachCookiesToResponse, sendVerificationEmail, sendResetPasswordEmail, createHash } = require('../utils');
 const {generateToken} = require("../utils/verificationToken");
 const {Token} = require("../models/Token");
 
@@ -75,6 +75,28 @@ const logout = async (req, res) => {
     res.status(StatusCodes.NO_CONTENT).json({status: 'success', message: 'Logout successful', data: {}});
 }
 
+const forgotPassword = async (req, res) => {
+    const {email} = req.body;
+    if (!email) {
+        throw new BadRequestError('Please enter a valid email');
+    }
+
+    const user = await User.findOne({email});
+    if (user) {
+        const passwordToken = generateToken();
+
+        // @TODO: use queue for this operation
+        await sendResetPasswordEmail({name:user.name, email:user.email, passwordToken});
+
+        const tenMinutes = 1000 * 10 * 60;
+        const passwordTokenExpirationDate = new Date(Date.now() + tenMinutes);
+        user.passwordToken = createHash(passwordToken);
+        user.passwordTokenExpirationDate = passwordTokenExpirationDate;
+        await user.save();
+    }
+    res.status(StatusCodes.OK).json({status: 'success', message: 'Please check your email for reset link'});
+}
+
 const verifyEmail = async (req, res) => {
     const { email, token} = req.body;
     const user = await User.findOne({ email});
@@ -111,5 +133,6 @@ module.exports = {
     register,
     logout,
     login,
+    forgotPassword,
     verifyEmail
 }
