@@ -12,18 +12,16 @@ const transporterInit = () => {
     })
 }
 
-const setupEmail = ({from, to, subject, html}) => {
-    if(!from) {
-        from = process.env.MAIL_ROM
-    }
+const sendEmail = ({to, subject, html}) => {
+    const from = process.env.MAIL_ROM
     return transporterInit().sendMail({
-        from: from,
-        to: to,
-        subject: subject,
-        html: html
+        from,
+        to,
+        subject,
+        html
     })
 }
 
 module.exports = {
-    setupEmail
+    sendEmail
 }
