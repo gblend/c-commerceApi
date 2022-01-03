@@ -1,9 +1,10 @@
 const {User, validateUserSchema, validateLogin} = require('../models/User');
 const { StatusCodes } = require('http-status-codes');
 const { CustomAPIError, UnauthenticatedError, BadRequestError } = require('../errors');
-const { attachCookiesToResponse, sendVerificationEmail, sendResetPasswordEmail, createHash } = require('../utils');
+const { attachCookiesToResponse, sendResetPasswordEmail, createHash } = require('../utils');
 const {generateToken} = require("../utils/verificationToken");
 const {Token} = require("../models/Token");
+const {queueVerifyEmail} = require("../utils/amqplibQueue");
 
 const register = async (req, res) => {
     const { email, name, password } = req.body;
@@ -23,8 +24,8 @@ const register = async (req, res) => {
     const verificationToken = generateToken();
     const user = await User.create({ email, name, password, role, verificationToken});
     const accessTokenJWT = await user.createJWT();
-    // @TODO: use queue for this operation
-    await sendVerificationEmail({name:user.name, email:user.email, verificationToken:user.verificationToken});
+    // send very email
+    await queueVerifyEmail({name:user.name, email:user.email, verificationToken:user.verificationToken})
     user.password = undefined;
 
     const tokenInfo = await saveTokenInfo(user, req);
