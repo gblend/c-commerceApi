@@ -4,7 +4,7 @@ const { CustomAPIError, UnauthenticatedError, BadRequestError } = require('../er
 const { attachCookiesToResponse, sendResetPasswordEmail, createHash } = require('../utils');
 const {generateToken} = require("../utils/verificationToken");
 const {Token} = require("../models/Token");
-const {queueVerifyEmail} = require("../utils/amqplibQueue");
+const {queueVerifyEmail, queueResetPasswordEmail} = require("../utils/amqplibQueue");
 
 const register = async (req, res) => {
     const { email, name, password } = req.body;
@@ -86,8 +86,8 @@ const forgotPassword = async (req, res) => {
     if (user) {
         const passwordToken = generateToken();
 
-        // @TODO: use queue for this operation
-        await sendResetPasswordEmail({name:user.name, email:user.email, passwordToken});
+        // queue reset password email
+        await queueResetPasswordEmail({name:user.name, email:user.email, passwordToken});
 
         const tenMinutes = 1000 * 10 * 60;
         const passwordTokenExpirationDate = new Date(Date.now() + tenMinutes);
