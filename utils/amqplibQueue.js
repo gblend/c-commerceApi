@@ -18,7 +18,7 @@ const consumeVerifyEmailQueue = async () => {
     const {channel:ch} = await connectAmqp(verifyEmailQue);
     ch.consume(verifyEmailQue, async (data) => {
         const verifyPayload = JSON.parse(data.content);
-        await sendVerificationEmail(verifyPayload.verifyQueName);
+        await sendVerificationEmail(verifyPayload.verifyEmailQue);
         ch.ack(data)
     })
 }
