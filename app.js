@@ -19,6 +19,7 @@ const xss = require('xss-clean');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const mongoSanitize = require('express-mongo-sanitize');
+const {consumeAmqpQueue} = require("./utils/amqplibQueue");
 
 const cloudinary = require('cloudinary').v2;
 cloudinary.config({
@@ -68,6 +69,7 @@ app.use(errorHandlerMiddleware);
 const port = process.env.PORT || 3000;
 const start = async () => {
     await connectDB(process.env.MONGO_URI);
+    await consumeAmqpQueue();
     app.listen(port, () => {
         console.log(`server listening on port ${port}`);
     });
