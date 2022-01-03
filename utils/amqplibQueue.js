@@ -3,7 +3,7 @@ const CustomError = require('../errors/index');
 const {sendVerificationEmail, sendResetPasswordEmail} = require("../utils");
 
 let channel = '', connection = '';
-const verifyQueName = process.env.VERIFY_EMAIL_QUEUE_NAME;
+const verifyEmailQue = process.env.VERIFY_EMAIL_QUEUE_NAME;
 const resetEmailQueue = process.env.RESET_EMAIL_QUEUE_NAME;
 
 const connectAmqp = async (queueName) => {
@@ -15,8 +15,8 @@ const connectAmqp = async (queueName) => {
 }
 
 const consumeVerifyEmailQueue = async () => {
-    const {channel:ch} = await connectAmqp(verifyQueName);
-    ch.consume(verifyQueName, async (data) => {
+    const {channel:ch} = await connectAmqp(verifyEmailQue);
+    ch.consume(verifyEmailQue, async (data) => {
         const verifyPayload = JSON.parse(data.content);
         await sendVerificationEmail(verifyPayload.verifyQueName);
         ch.ack(data)
@@ -24,8 +24,8 @@ const consumeVerifyEmailQueue = async () => {
 }
 
 const queueVerifyEmail = async (data) => {
-    const {channel:amqpChannel} = await connectAmqp(verifyQueName);
-    const queueEmail = await amqpChannel.sendToQueue(verifyQueName, Buffer.from(JSON.stringify({ verifyQueName: data })));
+    const {channel:amqpChannel} = await connectAmqp(verifyEmailQue);
+    const queueEmail = await amqpChannel.sendToQueue(verifyEmailQue, Buffer.from(JSON.stringify({ verifyEmailQue: data })));
     if (!queueEmail) {
         throw new CustomError.BadRequestError('Unable to queue verify email, please try again');
     }
