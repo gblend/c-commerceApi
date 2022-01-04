@@ -1,12 +1,12 @@
 const {User, validateUserSchema, validateLogin} = require('../models/User');
 const { StatusCodes } = require('http-status-codes');
 const { CustomAPIError, UnauthenticatedError, BadRequestError } = require('../errors');
-const { attachCookiesToResponse, sendResetPasswordEmail, createHash } = require('../utils');
+const { attachCookiesToResponse, createHash } = require('../utils');
 const {generateToken} = require("../utils/verificationToken");
 const {Token} = require("../models/Token");
-const {pushEmailToQueue} = require("../utils/amqplibQueue");
+const {pushToQueue} = require("../utils/amqplibQueue");
 
-let queueName = '', operationInfo = '';
+let queueName = '', queueErrorMsg = '';
 
 const register = async (req, res) => {
     const { email, name, password } = req.body;
@@ -27,9 +27,9 @@ const register = async (req, res) => {
     const user = await User.create({ email, name, password, role, verificationToken});
     const accessTokenJWT = await user.createJWT();
     // send very email
-    operationInfo = 'queue verify email';
+    queueErrorMsg = 'Unable to queue verify email, please try again';
     queueName = process.env.VERIFY_EMAIL_QUEUE_NAME;
-    await pushEmailToQueue(queueName, operationInfo,{name:user.name, email:user.email, verificationToken:user.verificationToken})
+    await pushToQueue(queueName, queueErrorMsg,{name:user.name, email:user.email, verificationToken:user.verificationToken})
     user.password = undefined;
 
     const tokenInfo = await saveTokenInfo(user, req);
@@ -91,9 +91,9 @@ const forgotPassword = async (req, res) => {
         const passwordToken = generateToken();
 
         // queue reset password email
-        operationInfo = 'queue reset password email';
+        queueErrorMsg = 'Unable to queue reset password email, please try again';
         queueName = process.env.RESET_EMAIL_QUEUE_NAME;
-        await pushEmailToQueue(queueName, operationInfo, {name:user.name, email:user.email, passwordToken});
+        await pushToQueue(queueName, queueErrorMsg, {name:user.name, email:user.email, passwordToken});
 
         const tenMinutes = 1000 * 10 * 60;
         const passwordTokenExpirationDate = new Date(Date.now() + tenMinutes);

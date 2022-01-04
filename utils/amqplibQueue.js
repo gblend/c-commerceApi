@@ -6,7 +6,7 @@ let channel = '', connection = '';
 const resetQueue = process.env.RESET_EMAIL_QUEUE_NAME;
 const verifyQueue = process.env.VERIFY_EMAIL_QUEUE_NAME;
 
-const initAmqpConnect = async () => {
+const initAmqpServer = async () => {
     const amqpServer = process.env.AMQP_SERVER;
     if (!connection) {
         return amqp.connect(amqpServer);
@@ -15,45 +15,35 @@ const initAmqpConnect = async () => {
 }
 
 const createAmqpChannel = async (queue) => {
-    connection = await initAmqpConnect();
+    connection = await initAmqpServer();
     channel = await connection.createChannel();
     await channel.assertQueue(queue);
     return {channel}
 }
 
-const consumeVerifyEmailQueue = async () => {
-    const {channel:ch} = await createAmqpChannel(verifyQueue);
-    ch.consume(verifyQueue, async (data) => {
-        let payload = JSON.parse(data.content);
-        await sendVerificationEmail(payload[verifyQueue]);
-        ch.ack(data)
-    })
-}
-
-const pushEmailToQueue = async (emailQueue, operationInfo, data) => {
-    const {channel:amqpChannel} = await createAmqpChannel(emailQueue);
-    const queueEmail = await amqpChannel.sendToQueue(emailQueue, Buffer.from(JSON.stringify({ [emailQueue]: data })));
-    if (!queueEmail) {
-        throw new CustomError.BadRequestError(`Unable to ${operationInfo}, please try again`);
+const pushToQueue = async (queue, queueErrorMsg, data) => {
+    const {channel:amqpChannel} = await createAmqpChannel(queue);
+    const queueData = await amqpChannel.sendToQueue(queue, Buffer.from(JSON.stringify({ [queue]: data })));
+    if (!queueData) {
+        throw new CustomError.BadRequestError(queueErrorMsg);
     }
-    await consumeAmqpQueue();
+    await execConsumeQueues();
 }
 
-const consumeResetPasswordEmail = async () => {
-    const {channel:ch} = await createAmqpChannel(resetQueue);
-    ch.consume(resetQueue, async (data) => {
-        let resetPayload = JSON.parse(data.content);
-        await sendResetPasswordEmail(resetPayload[resetQueue]);
+const initConsumeQueue = async (fn, queue) => {
+    const {channel:ch} = await createAmqpChannel(queue);
+    ch.consume(queue, async (data) => {
+        let queuePayload = JSON.parse(data.content);
+        await fn(queuePayload[queue]);
         ch.ack(data)
     })
 }
 
-const consumeAmqpQueue = async () => {
-    await consumeVerifyEmailQueue();
-    await consumeResetPasswordEmail();
+const execConsumeQueues = async () => {
+    await initConsumeQueue(sendVerificationEmail, verifyQueue);
+    await initConsumeQueue(sendResetPasswordEmail, resetQueue);
 }
 
 module.exports = {
-    consumeVerifyEmailQueue,
-    pushEmailToQueue,
+    pushToQueue,
 }
