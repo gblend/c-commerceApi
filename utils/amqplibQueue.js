@@ -3,47 +3,47 @@ const CustomError = require('../errors/index');
 const {sendVerificationEmail, sendResetPasswordEmail} = require("../utils");
 
 let channel = '', connection = '';
-const verifyEmailQue = process.env.VERIFY_EMAIL_QUEUE_NAME;
-const resetEmailQueue = process.env.RESET_EMAIL_QUEUE_NAME;
+const resetQueue = process.env.RESET_EMAIL_QUEUE_NAME;
+const verifyQueue = process.env.VERIFY_EMAIL_QUEUE_NAME;
 
-const connectAmqp = async (queueName) => {
+const initAmqpConnect = async () => {
     const amqpServer = process.env.AMQP_SERVER;
-    connection = await amqp.connect(amqpServer);
+    if (!connection) {
+        return amqp.connect(amqpServer);
+    }
+    return connection;
+}
+
+const createAmqpChannel = async (queue) => {
+    connection = await initAmqpConnect();
     channel = await connection.createChannel();
-    await channel.assertQueue(queueName);
+    await channel.assertQueue(queue);
     return {channel}
 }
 
 const consumeVerifyEmailQueue = async () => {
-    const {channel:ch} = await connectAmqp(verifyEmailQue);
-    ch.consume(verifyEmailQue, async (data) => {
-        const verifyPayload = JSON.parse(data.content);
-        await sendVerificationEmail(verifyPayload.verifyEmailQue);
+    const {channel:ch} = await createAmqpChannel(verifyQueue);
+    ch.consume(verifyQueue, async (data) => {
+        let payload = JSON.parse(data.content);
+        await sendVerificationEmail(payload[verifyQueue]);
         ch.ack(data)
     })
 }
 
-const queueVerifyEmail = async (data) => {
-    const {channel:amqpChannel} = await connectAmqp(verifyEmailQue);
-    const queueEmail = await amqpChannel.sendToQueue(verifyEmailQue, Buffer.from(JSON.stringify({ verifyEmailQue: data })));
+const pushEmailToQueue = async (emailQueue, operationInfo, data) => {
+    const {channel:amqpChannel} = await createAmqpChannel(emailQueue);
+    const queueEmail = await amqpChannel.sendToQueue(emailQueue, Buffer.from(JSON.stringify({ [emailQueue]: data })));
     if (!queueEmail) {
-        throw new CustomError.BadRequestError('Unable to queue verify email, please try again');
+        throw new CustomError.BadRequestError(`Unable to ${operationInfo}, please try again`);
     }
-}
-
-const queueResetPasswordEmail = async (data) => {
-    const {channel:amqpChannel} = await connectAmqp(resetEmailQueue);
-    const queueEmail = await amqpChannel.sendToQueue(resetEmailQueue, Buffer.from(JSON.stringify({ resetEmailQueue: data })));
-    if (!queueEmail) {
-        throw new CustomError.BadRequestError('Unable to queue reset password email, please try again');
-    }
+    await consumeAmqpQueue();
 }
 
 const consumeResetPasswordEmail = async () => {
-    const {channel:ch} = await connectAmqp(resetEmailQueue);
-    ch.consume(resetEmailQueue, async (data) => {
-        const resetPayload = JSON.parse(data.content);
-        await sendResetPasswordEmail(resetPayload.resetEmailQueue);
+    const {channel:ch} = await createAmqpChannel(resetQueue);
+    ch.consume(resetQueue, async (data) => {
+        let resetPayload = JSON.parse(data.content);
+        await sendResetPasswordEmail(resetPayload[resetQueue]);
         ch.ack(data)
     })
 }
@@ -55,7 +55,5 @@ const consumeAmqpQueue = async () => {
 
 module.exports = {
     consumeVerifyEmailQueue,
-    queueVerifyEmail,
-    consumeAmqpQueue,
-    queueResetPasswordEmail,
+    pushEmailToQueue,
 }

@@ -4,7 +4,9 @@ const { CustomAPIError, UnauthenticatedError, BadRequestError } = require('../er
 const { attachCookiesToResponse, sendResetPasswordEmail, createHash } = require('../utils');
 const {generateToken} = require("../utils/verificationToken");
 const {Token} = require("../models/Token");
-const {queueVerifyEmail, queueResetPasswordEmail} = require("../utils/amqplibQueue");
+const {pushEmailToQueue} = require("../utils/amqplibQueue");
+
+let queueName = '', operationInfo = '';
 
 const register = async (req, res) => {
     const { email, name, password } = req.body;
@@ -25,7 +27,9 @@ const register = async (req, res) => {
     const user = await User.create({ email, name, password, role, verificationToken});
     const accessTokenJWT = await user.createJWT();
     // send very email
-    await queueVerifyEmail({name:user.name, email:user.email, verificationToken:user.verificationToken})
+    operationInfo = 'queue verify email';
+    queueName = process.env.VERIFY_EMAIL_QUEUE_NAME;
+    await pushEmailToQueue(queueName, operationInfo,{name:user.name, email:user.email, verificationToken:user.verificationToken})
     user.password = undefined;
 
     const tokenInfo = await saveTokenInfo(user, req);
@@ -87,7 +91,9 @@ const forgotPassword = async (req, res) => {
         const passwordToken = generateToken();
 
         // queue reset password email
-        await queueResetPasswordEmail({name:user.name, email:user.email, passwordToken});
+        operationInfo = 'queue reset password email';
+        queueName = process.env.RESET_EMAIL_QUEUE_NAME;
+        await pushEmailToQueue(queueName, operationInfo, {name:user.name, email:user.email, passwordToken});
 
         const tenMinutes = 1000 * 10 * 60;
         const passwordTokenExpirationDate = new Date(Date.now() + tenMinutes);
