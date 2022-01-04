@@ -69,7 +69,6 @@ app.use(errorHandlerMiddleware);
 const port = process.env.PORT || 3000;
 const start = async () => {
     await connectDB(process.env.MONGO_URI);
-    await consumeAmqpQueue();
     app.listen(port, () => {
         console.log(`server listening on port ${port}`);
     });
