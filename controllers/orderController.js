@@ -4,7 +4,7 @@ const {Product} = require("../models/Product");
 const {Order} = require("../models/Order");
 const fakeStripeApi = require("../utils/stripeapi");
 const {checkPermissions} = require("../utils");
-const {redisGet, redisSet, redisDelete} = require("../utils/redis");
+const {redisRefreshCache, redisGetBatchRecords, redisSetBatchRecords} = require("../utils/redis");
 const allOrdersCacheKey = process.env.GET_ALL_ORDERS_CACHE_KEY;
 
 const createOrder = async (req, res) => {
@@ -46,7 +46,7 @@ const createOrder = async (req, res) => {
         clientSecret: paymentIntent.clientSecret
     }
     const newOrder = await Order.create(order);
-    await redisDelete(allOrdersCacheKey);
+    await redisRefreshCache(allOrdersCacheKey);
     res.json({status: StatusCodes.OK, message: '', data: newOrder});
 }
 const getSingleOrder = async (req, res) => {
@@ -67,13 +67,13 @@ const getCurrentUserOrders = async (req, res) => {
     res.json({status: StatusCodes.OK, message: '', data: userOrders});
 }
 const getAllOrders = async (req, res) => {
-    let allOrders = await redisGet(allOrdersCacheKey);
-    if (!allOrders) {
+    let allOrders = await redisGetBatchRecords(allOrdersCacheKey);
+    if (!allOrders.length) {
         allOrders = await Order.find({});
         if (!allOrders.length) {
             throw new CustomError.BadRequestError(`No order found`);
         }
-        await redisSet(allOrdersCacheKey, allOrders);
+        await redisSetBatchRecords(allOrdersCacheKey, allOrders);
     }
     res.json({status: StatusCodes.OK, message: '', total: allOrders.length, data: allOrders});
 }
@@ -88,7 +88,7 @@ const updateOrder = async (req, res) => {
     order.status = 'paid';
     order.paymentIntentId = paymentIntentId;
     await order.save();
-    await redisDelete(allOrdersCacheKey);
+    await redisRefreshCache(allOrdersCacheKey);
     res.json({status: StatusCodes.OK, message: '', data: order});
 }
 
