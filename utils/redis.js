@@ -78,10 +78,31 @@ const redisFlushAll = async () => {
     redis.flush();
 }
 
+/**
+ *  Add records to cache in batch
+ * @returns {*}
+ * @param key the key to set the batch records
+ * @param records
+ */
+ const redisSetBatchRecords = async (key, records) => {
+    if (Array.isArray(records) && records.length > 0) {
+        redis = await initRedisCache();
+        const pipeline = redis.pipeline();
+        records.map((record, index) => {
+            key = `${key}_${index}`;
+            pipeline.set(key, JSON.stringify(record));
+        });
+        return pipeline.exec();
+    }
+    return [];
+}
+
+
 module.exports = {
     redisSet,
     redisGet,
     redisDelete,
     redisRefreshCache,
-    redisFlushAll
+    redisFlushAll,
+    redisSetBatchRecords,
 }
