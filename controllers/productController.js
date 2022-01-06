@@ -4,7 +4,7 @@ const CustomError = require('../errors');
 const mongoose = require("mongoose");
 const { uploadProductImage } = require('../utils/uploadsController');
 const {paginator} = require("../utils/pagination");
-const {redisDelete, redisGet, redisSet} = require("../utils/redis");
+const {redisRefreshCache, redisSetBatchRecords, redisGetBatchRecords} = require("../utils/redis");
 const allProductsCacheKey = process.env.GET_ALL_PRODUCTS_CACHE_KEY;
 
 const createProduct = async (req, res) => {
@@ -15,20 +15,20 @@ const createProduct = async (req, res) => {
             .json({ status: 'error', message: '', errors: error.details[0].message.split('\"').join('') });
     }
     const product = await Product.create(req.body);
-    await redisDelete(allProductsCacheKey);
+    await redisRefreshCache(allProductsCacheKey);
     return res.status(StatusCodes.CREATED)
         .json({ status: 'success', message: 'Product created successfully', data: product });
 }
 
 const getAllProducts = async (req, res) => {
-    let products = await redisGet(allProductsCacheKey);
-    if (products === null) {
+    let products = await redisGetBatchRecords(allProductsCacheKey);
+    if (!products.length) {
         products = await Product.find({});
         if (!products) {
             throw new CustomError.NotFoundError('No products found');
         }
 
-        await redisSet(allProductsCacheKey, products);
+        await redisSetBatchRecords(allProductsCacheKey, products);
     }
     const total = await Product.countDocuments().exec();
     return res.status(StatusCodes.OK)
@@ -54,7 +54,7 @@ const getSingleProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
     const { id:productId } = req.params;
     const product = await Product.findOneAndUpdate({ _id: productId }, req.body, { new: true, runValidators: true });
-    await redisDelete(allProductsCacheKey);
+    await redisRefreshCache(allProductsCacheKey);
     return res.status(StatusCodes.OK).json({ status: 'success', message: 'Product updated successfully', data: product });
 }
 
@@ -65,7 +65,7 @@ const deleteProduct = async (req, res) => {
         throw new CustomError.BadRequestError(`Product with id ${productId} not found`);
     }
     product.remove();
-    await redisDelete(allProductsCacheKey);
+    await redisRefreshCache(allProductsCacheKey);
     return res.status(StatusCodes.NO_CONTENT).json({ status: 'success', message: `Product with id ${id} deleted successfully`, data: {} });
 }
 
