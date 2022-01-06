@@ -97,6 +97,33 @@ const redisFlushAll = async () => {
     return [];
 }
 
+/**
+ * Get records in cache from batch
+ * @param key the key to get the cached batch records
+ * @returns {*}
+ */
+const redisGetBatchRecords = async (key) => {
+    const cachedRecords = [];
+    redis = await initRedisCache();
+    const cachedKeys = await redis.keys(`*${key}_*`);
+    if (Array.isArray(cachedKeys) && cachedKeys.length > 0) {
+        const pipeline = redis.pipeline();
+        cachedKeys.map(cachedKey => {
+            pipeline.get(cachedKey);
+        });
+        return pipeline.exec().then(result => {
+            if (result && result.length > 0) {
+                result.map(data => {
+                    if (data[1] && data[1] !== '{}') {
+                        cachedRecords.push(JSON.parse(data[1]));
+                    }
+                });
+            }
+            return cachedRecords;
+        })
+    }
+    return cachedRecords;
+}
 
 module.exports = {
     redisSet,
@@ -105,4 +132,5 @@ module.exports = {
     redisRefreshCache,
     redisFlushAll,
     redisSetBatchRecords,
+    redisGetBatchRecords
 }
