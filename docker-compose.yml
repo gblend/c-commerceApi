@@ -7,19 +7,45 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     container_name: ccommerceApi_image
-    networks: ccommerce
+    networks:
+      - ccommerce
     tty: true
+    # Expose the internal 8080 port, but do not specify host port mapping. Docker will map it as it pleases and
+    # prevent clashes to existing ports.
     ports:
-      - 5000
+      - '5000'
     links:
       - redis
+      - rabbitmq
 
   redis:
-    image: redis:alphine
-    image_name: redis
-    volumes: ./redisStore:/data
-    networks: ccommerce
+    image: redis:latest
+    container_name: ccommerceApi_redis
+    ports:
+      - '6379:6379'
+    volumes:
+      - ./redisStore:/data
+    networks:
+      - ccommerce
 
-  networks:
-    ccommerce:
-      driver: bridge
+  rabbitmq:
+    # rabbitmq image with rabbitmq management ui
+    image: rabbitmq:management
+    container_name: ccommerceApi_rabbitmq
+    # set the rabbitmq username and password that will be used to connect to rabbitmq management ui
+    environment:
+      RABBITMQ_DEFAULT_USER: 'guest'
+      RABBITMQ_DEFAULT_PASS: 'guest'
+    volumes:
+      - ./amqpStore:/data
+    ports:
+      # AMQP protocol port
+      - '5672:5672'
+      # HTTP management UI
+      - '15672:15672'
+    networks:
+      - ccommerce
+
+networks:
+  ccommerce:
+    driver: bridge
