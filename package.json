@@ -9,9 +9,10 @@
   "main": "app.js",
   "scripts": {
     "start:dev": "nodemon app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "jest tests/*'"
   },
-  "author": "gabriel@gmail.com",
+  "author": "gabrielilochi@gmail.com",
   "license": "ISC",
   "dependencies": {
     "amqplib": "^0.8.0",
