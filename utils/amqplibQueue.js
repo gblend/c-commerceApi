@@ -7,7 +7,7 @@ const resetQueue = process.env.RESET_EMAIL_QUEUE_NAME;
 const verifyQueue = process.env.VERIFY_EMAIL_QUEUE_NAME;
 
 const initAmqpServer = async () => {
-    const amqpServer = process.env.AMQP_SERVER;
+    const amqpServer = `amqp://${process.env.AMQP_SERVER_HOST}:${process.env.AMQP_SERVER_PORT}`;
     if (!connection) {
         return amqp.connect(amqpServer);
     }
