@@ -5,6 +5,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - APP_PORT=$APP_PORT
+        - RABBITMQ_DEFAULT_USER=$RABBITMQ_DEFAULT_USER
+        - RABBITMQ_DEFAULT_PASS=$RABBITMQ_DEFAULT_PASS
+        - REDIS_PORT=$REDIS_PORT
+        - AMQP_SERVER_PORT=$AMQP_SERVER_PORT
     restart: unless-stopped
     container_name: ccommerceApi_image
     networks:
@@ -13,7 +19,7 @@ services:
     # Expose the internal 8080 port, but do not specify host port mapping. Docker will map it as it pleases and
     # prevent clashes to existing ports.
     ports:
-      - '5000'
+      - ${APP_PORT}
     links:
       - redis
       - rabbitmq
@@ -22,9 +28,9 @@ services:
     image: redis:latest
     container_name: ccommerceApi_redis
     ports:
-      - '6379:6379'
+      - ${REDIS_PORT}:${REDIS_PORT}
     volumes:
-      - ./redisStore:/data
+      - ./tmp/redisStore:/data
     networks:
       - ccommerce
 
@@ -34,13 +40,13 @@ services:
     container_name: ccommerceApi_rabbitmq
     # set the rabbitmq username and password that will be used to connect to rabbitmq management ui
     environment:
-      RABBITMQ_DEFAULT_USER: 'guest'
-      RABBITMQ_DEFAULT_PASS: 'guest'
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
     volumes:
-      - ./amqpStore:/data
+      - ./tmp/amqpStore:/data
     ports:
       # AMQP protocol port
-      - '5672:5672'
+      - ${AMQP_SERVER_PORT}:${AMQP_SERVER_PORT}
       # HTTP management UI
       - '15672:15672'
     networks:
