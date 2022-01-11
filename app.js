@@ -66,7 +66,7 @@ app.use('/api/v1/orders', orderRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-const port = process.env.PORT || 3000;
+const port = process.env.APP_PORT || 5000;
 const start = async () => {
     await connectDB(process.env.MONGO_URI);
     app.listen(port, () => {
