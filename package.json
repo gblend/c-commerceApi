@@ -10,7 +10,7 @@
   "scripts": {
     "start:dev": "nodemon app.js",
     "start": "node app.js",
-    "test": "jest tests/*'"
+    "test": "jest tests/*"
   },
   "author": "gabrielilochi@gmail.com",
   "license": "ISC",
