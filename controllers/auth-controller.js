@@ -12,7 +12,7 @@ const register = async (req, res) => {
     const { email, name, password } = req.body;
     const {error} = validateUserSchema(req.body);
     if (error) {
-        return res.status(StatusCodes.BAD_REQUEST).json({ status: 'error', message: '', errors: error.details[0].message.split('\"').join('') });
+        return res.status(StatusCodes.BAD_REQUEST).json({ status: StatusCodes.BAD_REQUEST, message: '', errors: error.details[0].message.split('\"').join('') });
     }
 
     const isEmailExist = await User.findOne( { email });
@@ -26,7 +26,7 @@ const register = async (req, res) => {
     const verificationToken = generateToken();
     const user = await User.create({ email, name, password, role, verificationToken});
     const accessTokenJWT = await user.createJWT();
-    // send very email
+    // send verify email via queue
     queueErrorMsg = 'Unable to queue verify email, please try again';
     queueName = process.env.VERIFY_EMAIL_QUEUE_NAME;
     await pushToQueue(queueName, queueErrorMsg,{name:user.name, email:user.email, verificationToken:user.verificationToken})
@@ -35,14 +35,14 @@ const register = async (req, res) => {
     const tokenInfo = await saveTokenInfo(user, req);
     const refreshTokenJWT = await user.createRefreshJWT(user, tokenInfo.refreshToken);
     attachCookiesToResponse({accessTokenJWT, refreshTokenJWT, res});
-    return res.status(StatusCodes.CREATED).json({ status: 'success', message: 'Please check your email for a link to verify your account', token: accessTokenJWT, refreshToken: refreshTokenJWT, data: user});
+    return res.status(StatusCodes.OK).json({ status: StatusCodes.OK, message: 'Please check your email for a link to verify your account', token: accessTokenJWT, refreshToken: refreshTokenJWT, data: user});
 }
 
 const login = async (req, res) => {
     let verificationMsg = '';
     const { error } = validateLogin(req.body);
     if (error) {
-        return res.status(StatusCodes.BAD_REQUEST).json({ status: 'failed', message: '', errors: error.details[0].message.split('\"').join('') });
+        return res.status(StatusCodes.BAD_REQUEST).json({ status: StatusCodes.BAD_REQUEST, message: '', errors: error.details[0].message.split('\"').join('') });
     }
 
     const { email, password } = req.body;
@@ -65,7 +65,7 @@ const login = async (req, res) => {
     const refreshTokenJWT = await user.createRefreshJWT(user, tokenInfo.refreshToken);
 
     attachCookiesToResponse({accessTokenJWT, refreshTokenJWT, res});
-    return res.json({ status: 'success', message: 'Login successful', token: accessTokenJWT, refreshToken: refreshTokenJWT, data: user, verificationMsg });
+    return res.json({ status: StatusCodes.OK, message: 'Login successful', token: accessTokenJWT, refreshToken: refreshTokenJWT, data: user, verificationMsg });
 }
 
 const logout = async (req, res) => {
@@ -77,7 +77,7 @@ const logout = async (req, res) => {
     res.clearCookie('accessToken');
     res.clearCookie('refreshToken');
 
-    res.status(StatusCodes.NO_CONTENT).json({status: 'success', message: 'Logout successful', data: {}});
+    res.status(StatusCodes.NO_CONTENT).json({status: StatusCodes.NO_CONTENT, message: 'Logout successful', data: {}});
 }
 
 const forgotPassword = async (req, res) => {
@@ -101,7 +101,7 @@ const forgotPassword = async (req, res) => {
         user.passwordTokenExpirationDate = passwordTokenExpirationDate;
         await user.save();
     }
-    res.status(StatusCodes.OK).json({status: 'success', message: 'Please check your email for reset link'});
+    res.status(StatusCodes.OK).json({status: StatusCodes.OK, message: 'Please check your email for reset link'});
 }
 
 const resetPassword = async (req, res) => {
@@ -123,7 +123,7 @@ const resetPassword = async (req, res) => {
            await user.save();
         }
     }
-    res.status(StatusCodes.OK).json({status: 'success', message: 'Password changed successfully. Redirecting to login page'});
+    res.status(StatusCodes.OK).json({status: StatusCodes.OK, message: 'Password changed successfully. Redirecting to login page'});
 }
 
 const verifyEmail = async (req, res) => {
@@ -140,7 +140,7 @@ const verifyEmail = async (req, res) => {
     user.verificationToken = '';
     user.verified = Date.now();
     user.save();
-    res.status(StatusCodes.OK).json({ status: 'success', message: 'Email successfully verified'});
+    res.status(StatusCodes.OK).json({ status: StatusCodes.OK, message: 'Email successfully verified'});
 }
 
 const saveTokenInfo = async ({_id:userId}, req) => {
