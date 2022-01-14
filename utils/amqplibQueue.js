@@ -38,7 +38,7 @@ const pushToQueue = async (queue, queueErrorMsg, data) => {
 const initConsumeQueue = async (fn, queue) => {
     const {channel:ch} = await createAmqpChannel(queue);
     ch.assertExchange(queue, 'direct', {durable: true});
-    // The parameters -- queue, exchange, routingKey
+    // The parameters -- queue, exchange, bindingKey
     ch.bindQueue(queue, queue, queue.toLowerCase());
     ch.consume(queue, async (data) => {
         let queuePayload = JSON.parse(data.content);
