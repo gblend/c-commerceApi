@@ -2,7 +2,7 @@ const { StatusCodes } = require('http-status-codes');
 const CustomError = require("../errors");
 const {Product} = require("../models/Product");
 const {Order} = require("../models/Order");
-const fakeStripeApi = require("../utils/stripeapi");
+const StripeApi = require("../utils/stripeapi");
 const {checkPermissions} = require("../utils");
 const {redisRefreshCache, redisGetBatchRecords, redisSetBatchRecords} = require("../utils/redis");
 const allOrdersCacheKey = process.env.GET_ALL_ORDERS_CACHE_KEY;
@@ -35,7 +35,8 @@ const createOrder = async (req, res) => {
         orderItems.push(singleOrderItem);
     }
     const total = tax + shippingFee + subtotal;
-    const paymentIntent = await fakeStripeApi({amount: total, currency:'usd'});
+    const stripeApi = new StripeApi({user, amount: total, currency:'usd', shippingFee});
+    const paymentIntent = await stripeApi.paymentIntent();
     const order = {
         orderItems,
         tax,
