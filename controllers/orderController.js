@@ -2,9 +2,10 @@ const { StatusCodes } = require('http-status-codes');
 const CustomError = require("../errors");
 const {Product} = require("../models/Product");
 const {Order} = require("../models/Order");
-const StripeApi = require("../utils/stripeapi");
 const {checkPermissions} = require("../utils");
 const {redisRefreshCache, redisGetBatchRecords, redisSetBatchRecords} = require("../utils/redis");
+const {paymentIntent} = require("../utils/stripeapi");
+const {User} = require("../models/User");
 const allOrdersCacheKey = process.env.GET_ALL_ORDERS_CACHE_KEY;
 
 const createOrder = async (req, res) => {
@@ -35,8 +36,10 @@ const createOrder = async (req, res) => {
         orderItems.push(singleOrderItem);
     }
     const total = tax + shippingFee + subtotal;
-    const stripeApi = new StripeApi({user, amount: total, currency:'usd', shippingFee});
-    const paymentIntent = await stripeApi.paymentIntent();
+    const user = await User.findOne({ _id: req.user.id});
+    req.user.email = user.email;
+
+    const pmtIntent = await paymentIntent({user: req.user, amount: total, shippingFee});
     const order = {
         orderItems,
         tax,
@@ -44,7 +47,7 @@ const createOrder = async (req, res) => {
         subtotal,
         total,
         user: req.user.id,
-        clientSecret: paymentIntent.clientSecret
+        clientSecret: pmtIntent.clientSecret
     }
     const newOrder = await Order.create(order);
     await redisRefreshCache(allOrdersCacheKey);
