@@ -37,11 +37,11 @@ jobs:
       - run: npm run build --if-present
       - run: npm test
 
-      # Run linter against code base
-      - name: Lint Code Base
-        uses: docker://github/super-linter:v3
-        env:
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: master
-
+      # upload build artifacts to master branch of the repository
+      env:
+        CI: true
+      - uses: actions/upload-artifact@master
+        with:
+          name: build artifacts
+          path: public/
 
