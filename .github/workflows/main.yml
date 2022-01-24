@@ -33,11 +33,11 @@ jobs:
         cache: 'npm'
 
     # Run linter against code base
-      - name: Lint Code Base
-        uses: docker://github/super-linter:v3
-        env:
-          VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: master
+    - name: Lint Code Base
+      uses: docker://github/super-linter:v3
+      env:
+        VALIDATE_ALL_CODEBASE: false
+        DEFAULT_BRANCH: master
 
       # Runs a set of commands using the runners shell
     - name: Install dependencies, build and test
