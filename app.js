@@ -19,7 +19,9 @@ const xss = require('xss-clean');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const mongoSanitize = require('express-mongo-sanitize');
-const {consumeAmqpQueue} = require("./utils/amqplibQueue");
+const graphqlSchema = require('./graphql/schema');
+const graphqlResolver = require('./graphql/resolvers');
+const {graphqlHTTP} = require("express-graphql");
 
 const cloudinary = require('cloudinary').v2;
 cloudinary.config({
@@ -51,6 +53,10 @@ if(app.get('env') === 'development') {
     app.use(morgan('dev'));
 }
 
+app.use('/v1/graphql', graphqlHTTP({
+    schema: graphqlSchema,
+    rootValue: graphqlResolver
+}))
 app.get('/api/v1/', (req, res) => {
     return res.json({'status': '200', message: 'Ecommerce backend service running'});
 });
